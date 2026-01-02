@@ -3,9 +3,11 @@ from unittest.mock import patch, MagicMock
 import os
 import re
 from bs4 import BeautifulSoup
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 
 # Use standard imports assuming tests are run from the project root
-from src.tsumego_hero_collection_to_sgf import get_problem_details, clean_sgf_js, main
+from src.tsumego_hero_collection_to_sgf import get_problem_details, clean_sgf_js, main, create_session
 
 class TestTsumegoHeroCollectionToSgf(unittest.TestCase):
     def setUp(self):
@@ -15,17 +17,45 @@ class TestTsumegoHeroCollectionToSgf(unittest.TestCase):
         with open(os.path.join(self.test_data_dir, filename), 'r', encoding='utf-8') as f:
             return f.read()
 
-    @patch('src.tsumego_hero_collection_to_sgf.requests.get')
-    def test_get_problem_details_1447(self, mock_get):
+    def test_create_session_configuration(self):
+        """Test that the session is configured with the correct retry strategy."""
+        session = create_session()
+        
+        # Check headers
+        self.assertIn("User-Agent", session.headers)
+        self.assertIn("Referer", session.headers)
+        
+        # Check HTTPAdapter configuration
+        self.assertIn("https://", session.adapters)
+        self.assertIn("http://", session.adapters)
+        
+        adapter = session.adapters["https://"]
+        self.assertIsInstance(adapter, HTTPAdapter)
+        
+        # Verify Retry object configuration
+        retry = adapter.max_retries
+        self.assertIsInstance(retry, Retry)
+        self.assertEqual(retry.total, 5)
+        self.assertEqual(retry.backoff_factor, 1)
+        self.assertIn(429, retry.status_forcelist)
+        self.assertIn(500, retry.status_forcelist)
+        self.assertIn(502, retry.status_forcelist)
+        self.assertIn(503, retry.status_forcelist)
+        self.assertIn(504, retry.status_forcelist)
+        self.assertIn("GET", retry.allowed_methods)
+
+    def test_get_problem_details_1447(self):
         # Setup mock for 1447
         html_content = self.read_test_file('1447')
         mock_response = MagicMock()
         mock_response.status_code = 200
         mock_response.text = html_content
-        mock_get.return_value = mock_response
+        
+        mock_session = MagicMock()
+        mock_session.get.return_value = mock_response
 
         url = "https://tsumego.com/1447"
-        title, sgf_content = get_problem_details(url)
+        title, sgf_content = get_problem_details(mock_session, url)
 
         expected_title = "Life & Death - Elementary  #1 1/900"
         expected_sgf_start = "(;GM[1]FF[4]CA[UTF-8]AP[CGoban:3]ST[2]\nRU[Japanese]"
@@ -35,17 +65,18 @@ class TestTsumegoHeroCollectionToSgf(unittest.TestCase):
         self.assertTrue(sgf_content.strip().startswith(expected_sgf_start))
         self.assertIn("PW[white]PB[black]", sgf_content)
 
-    @patch('src.tsumego_hero_collection_to_sgf.requests.get')
-    def test_get_problem_details_13780(self, mock_get):
+    def test_get_problem_details_13780(self):
         # Setup mock for 13780
         html_content = self.read_test_file('13780')
         mock_response = MagicMock()
         mock_response.status_code = 200
         mock_response.text = html_content
-        mock_get.return_value = mock_response
+        
+        mock_session = MagicMock()
+        mock_session.get.return_value = mock_response
 
         url = "https://tsumego.com/13780"
-        title, sgf_content = get_problem_details(url)
+        title, sgf_content = get_problem_details(mock_session, url)
 
         expected_title = "Life & Death - Elementary  #1 177/900"
         
