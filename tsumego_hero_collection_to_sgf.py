@@ -1,8 +1,10 @@
 import os
 import re
 import time
+import argparse
 import requests
 from bs4 import BeautifulSoup
+from urllib.parse import urlparse
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:137.0) Gecko/20100101 Firefox/137.0",
@@ -79,14 +81,20 @@ def get_problem_details(problem_url):
         return None, None
 
 def main():
-    base_url = "https://tsumego.com"
-    collection_url = "https://tsumego.com/sets/view/50/1"
+    parser = argparse.ArgumentParser(description='Download Tsumego Hero collections and convert them to SGF files.')
+    parser.add_argument('url', help='The URL of the collection to download (e.g., https://tsumego.com/sets/view/50/1).')
+    parser.add_argument('--output', default='.', help='The parent output directory. A subdirectory named after the collection will be created here to store the SGF files.')
+    args = parser.parse_args()
+
+    parsed_url = urlparse(args.url)
+    base_url = f"{parsed_url.scheme}://{parsed_url.netloc}"
+    collection_url = args.url
     
     print(f"Fetching collection: {collection_url}...")
     response = requests.get(collection_url, headers=HEADERS)
     
     if response.status_code != 200:
-        print("Failed to access collection page.")
+        print(f"Failed to access collection page: {response.status_code}")
         return
 
     soup = BeautifulSoup(response.text, 'html.parser')
@@ -95,7 +103,7 @@ def main():
     collection_name_tag = soup.select_one('.homeLeft .title4')
     collection_name = collection_name_tag.text.strip() if collection_name_tag else "Tsumego_Collection"
     
-    folder_name = sanitize_filename(collection_name)
+    folder_name = os.path.join(args.output, sanitize_filename(collection_name))
     if not os.path.exists(folder_name):
         os.makedirs(folder_name)
         print(f"Created directory: {folder_name}")
