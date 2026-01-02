@@ -5,6 +5,7 @@ import argparse
 import requests
 from bs4 import BeautifulSoup
 from urllib.parse import urlparse
+from tqdm import tqdm
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:137.0) Gecko/20100101 Firefox/137.0",
@@ -119,7 +120,7 @@ def main():
     print(f"Found {len(problem_links)} problems in '{collection_name}'. Starting download...")
 
     # --- 3. Iterate and Download ---
-    for index, rel_link in enumerate(problem_links):
+    for rel_link in tqdm(problem_links, desc="Downloading problems"):
         full_url = f"{base_url}{rel_link}"
         
         title, sgf_content = get_problem_details(full_url)
@@ -130,10 +131,8 @@ def main():
             
             with open(file_path, "w", encoding="utf-8") as f:
                 f.write(sgf_content)
-                
-            print(f"[{index+1}/{len(problem_links)}] Saved: {filename}")
         else:
-            print(f"[{index+1}/{len(problem_links)}] Skipped: {rel_link}")
+            tqdm.write(f"Skipped: {rel_link}")
         
         time.sleep(1)
 
