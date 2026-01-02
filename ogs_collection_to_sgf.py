@@ -96,7 +96,8 @@ def writePuzzle(file, puzzle):
     if initial_white:
         file.write('AW')
         writeInitialStones(file, initial_white)
-    prependText(puzzle['move_tree'], puzzle['puzzle_description'])
+    if 'puzzle_description' in puzzle:
+        prependText(puzzle['move_tree'], puzzle['puzzle_description'])
     player = puzzle['initial_player'][0].upper()
     file.write('PL[')
     file.write(player)
