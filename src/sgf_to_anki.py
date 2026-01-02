@@ -50,6 +50,15 @@ def process_sgf_content(sgf_content):
     return processed_sgf
 
 
+def natural_sort_key(s):
+    """
+    Key for natural sorting (e.g., '1' < '2' < '10').
+    Splits the string into text and numeric chunks.
+    """
+    return [int(text) if text.isdigit() else text.lower()
+            for text in re.split('([0-9]+)', s)]
+
+
 def main():
     parser = argparse.ArgumentParser(
         description='Convert a directory of SGF files to a TSV file for Anki import.'
@@ -63,6 +72,7 @@ def main():
         return
 
     sgf_files = glob.glob(os.path.join(args.input_dir, '*.sgf'))
+    sgf_files.sort(key=natural_sort_key)
 
     with open(args.output_file, 'w', encoding='utf-8') as tsv_file:
         for sgf_file_path in sgf_files:

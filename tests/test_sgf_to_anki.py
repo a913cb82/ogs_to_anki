@@ -4,7 +4,7 @@ import sys
 import re
 
 # Use standard imports assuming tests are run from the project root
-from src.sgf_to_anki import clean_sgf_comment, process_sgf_content
+from src.sgf_to_anki import clean_sgf_comment, process_sgf_content, natural_sort_key
 
 
 class TestSgfToAnki(unittest.TestCase):
@@ -55,6 +55,18 @@ class TestSgfToAnki(unittest.TestCase):
         sgf_content = "(;C[First comment.\nNew line.];AB[aa]C[Second comment.\nAnother line.])"
         expected = "(;C[First comment.. New line.];AB[aa]C[Second comment.. Another line.])"
         self.assertEqual(process_sgf_content(sgf_content), expected)
+
+    def test_natural_sort_key(self):
+        files = ['10.sgf', '1.sgf', '2.sgf', '20.sgf', '100.sgf']
+        expected = ['1.sgf', '2.sgf', '10.sgf', '20.sgf', '100.sgf']
+        files.sort(key=natural_sort_key)
+        self.assertEqual(files, expected)
+        
+        # Test with prefix
+        files = ['file10.txt', 'file1.txt', 'file2.txt']
+        expected = ['file1.txt', 'file2.txt', 'file10.txt']
+        files.sort(key=natural_sort_key)
+        self.assertEqual(files, expected)
 
 if __name__ == '__main__':
     unittest.main()
