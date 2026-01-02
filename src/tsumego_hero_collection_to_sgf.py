@@ -3,6 +3,8 @@ import re
 import time
 import argparse
 import requests
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 from bs4 import BeautifulSoup
 from urllib.parse import urlparse
 from tqdm import tqdm
@@ -15,6 +17,24 @@ HEADERS = {
     "Referer": "https://tsumego.com/sets",
     "Cookie": "lastVisit=2133; mode=1; lightDark=light; lastSet=50; secondsCheck=15460300; misplays=1;"
 }
+
+def create_session():
+    """
+    Creates a requests Session with a retry strategy.
+    """
+    session = requests.Session()
+    session.headers.update(HEADERS)
+    
+    retry_strategy = Retry(
+        total=5,
+        backoff_factor=1,
+        status_forcelist=[429, 500, 502, 503, 504],
+        allowed_methods=["HEAD", "GET", "OPTIONS"]
+    )
+    adapter = HTTPAdapter(max_retries=retry_strategy)
+    session.mount("https://", adapter)
+    session.mount("http://", adapter)
+    return session
 
 def clean_sgf_js(raw_js_array_content):
     """
@@ -50,9 +70,9 @@ def sanitize_filename(name):
     name = re.sub(r'[<>:"\\|?*]', '', name)
     return name.strip()
 
-def get_problem_details(problem_url):
+def get_problem_details(session, problem_url):
     try:
-        response = requests.get(problem_url, headers=HEADERS)
+        response = session.get(problem_url)
         if response.status_code != 200:
             print(f"Failed to load {problem_url}: {response.status_code}")
             return None, None
@@ -91,8 +111,14 @@ def main():
     base_url = f"{parsed_url.scheme}://{parsed_url.netloc}"
     collection_url = args.url
     
+    session = create_session()
+    
     print(f"Fetching collection: {collection_url}...")
-    response = requests.get(collection_url, headers=HEADERS)
+    try:
+        response = session.get(collection_url)
+    except Exception as e:
+        print(f"Failed to access collection page: {e}")
+        return
     
     if response.status_code != 200:
         print(f"Failed to access collection page: {response.status_code}")
@@ -123,7 +149,7 @@ def main():
     for rel_link in tqdm(problem_links, desc="Downloading problems"):
         full_url = f"{base_url}{rel_link}"
         
-        title, sgf_content = get_problem_details(full_url)
+        title, sgf_content = get_problem_details(session, full_url)
         
         if title and sgf_content:
             filename = f"{sanitize_filename(title)}.sgf"
