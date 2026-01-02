@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>
+Life & Death - Elementary 177/0 on Tsumego Hero</title>
+<meta name="description" content="Interactive tsumego database. Solve go problems, get stronger, level up, have fun.">
+<meta name="keywords" content="tsumego, problems, puzzles, baduk, weiqi, tesuji, life and death, solve, solving, hero, go, in-seong, level" >
+<meta name="Author" content="Joschka Zimdars">
+<meta property="og:title" content="Tsumego Hero">
+<link rel="stylesheet" type="text/css" href="/cache_css/app.v1767350141.css"/><link rel="stylesheet" id="dark-theme-css" href="/cache_css/dark-theme.v1767350141.css" disabled /><link rel="stylesheet" id="light-theme-css" href="/cache_css/light-theme.v1767350141.css" /><link href="/favicon.ico" type="image/x-icon" rel="icon"/><link href="/favicon.ico" type="image/x-icon" rel="shortcut icon"/><script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.8/dist/htmx.min.js" integrity="sha384-/TgkGk7p307TH7EXJDuUlgG3Ce1UVolAOFopFekQkkXihi5u/6OCvVKyz1W+idaz" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/idiomorph@0.3.0/dist/idiomorph-ext.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.3/dist/cdn.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.6/Sortable.min.js"></script>
+<script type="text/javascript" src="/cache_js/app.v1767350140.js"></script></head>
+
+<body class="light-theme">
+<div id="container" align="center">
+	<div width="100%" class="whitebox1">
+		<div align="left">
+			<a href="/">
+							<img id="logo1" alt="Tsumego Hero" title="Tsumego Hero" src="/img/tsumegoHero1.png" onmouseover="logoHover(this)" onmouseout="logoNoHover(this)" height="55px">
+			</a>
+		</div>
+		<div class="outerMenu1">
+							<div id="newMenu">
+				<nav>
+					<ul>
+						<li><a class="homeMenuLink" href="/"  >Home</a><ul class="newMenuLi1"><li><a id="tutorialLink" href="/sites/websitefunctions" >Functions & Modes</a></li><li><a id="tutorialLink" href="/sites/gotutorial" >Go Rules</a></li><li><a id="forumLink" href="/forums">Forums</a></li><li><a href="/users/authors" >About</a></li></ul></li><li><a   href="/sets">Collections</a></li><li><a class="homeMenuLink"  href="/tsumegos/play/2133">Play</a><ul class="newMenuLi3"><li><a href="/tsumegos/play/2133?mode=1" >Level</a></li></ul><li><a   href="/users/highscore">Highscore</a><ul class="newMenuLi4"><li><a id="tutorialLink" href="/users/highscore" >Level Highscore</a></li><li><a id="tutorialLink" href="/users/rating" >Rating Highscore</a></li><li><a id="tutorialLink" href="/users/achievements" >Achievement Highscore</a></li><li><a id="tutorialLink" href="/users/added_tags" >Tag Highscore</a></li><li><a id="tutorialLink" href="/users/leaderboard" >Daily Highscore</a></li></ul><li><a style="color:#aaa;">Discuss</a></li><li class="menuIcons1">
+						<a href="#" id="soundButton" onclick="changeSound(); return false;"><img id="soundButtonImage" src="/img/sound-icon1.png" width="25px"></a>
+					</li>						<li class="menuIcons1">
+							<div class="dropdown" id="check3">
+								<label for="dropdown-1" id="boardsInMenu" class="dropdown-button">
+									<img id="boardsButtonImage" src="/img/boards-icon1.png" width="25px">
+								</label>
+								<input class="dropdown-open" type="checkbox" id="dropdown-1" style="display:none;" onchange="check1()">
+								<label for="dropdown-1" class="dropdown-overlay"></label>
+								<div class="dropdown-inner" id="dropdown-inner-propagation">
+									<table id="dropdowntable" border="0"></table>
+									<br>
+									<div id="dropdowntable2" align="center">
+										<a class="new-button" href="/13780">Save</a>
+										<br><br>
+									</div>
+									</div>
+									</div>
+						</li>
+						<li class="menuIcons1">
+							<a class="menuIcons2" id="darkButton" onclick="darkAndLight();"><img id="darkButtonImage"></a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+			</div>
+		<div class="outerMenu2">
+			<li><a></a></li>
+			</div>
+		<div class="outerMenu3">
+			<li><a class="menuLi" id="signInMenu" href="/users/login">Sign In</a></li>		</div>
+
+		</div>
+				<div width="100%" align="left" class="whitebox2">
+		<a id="refreshLinkToDiscuss"></a><div id="content" >﻿<link rel="stylesheet" type="text/css" href="/besogo/css/besogo.css">
+<link rel="stylesheet" type="text/css" href="/besogo/css/board-flat.css">
+<script src="/besogo/js/besogo.js"></script>
+<script src="/besogo/js/transformation.js"></script>
+<script src="/besogo/js/treeProblemUpdater.js?v=2"></script>
+<script src="/besogo/js/nodeHashTable.js"></script>
+<script src="/besogo/js/editor.js?v=2"></script>
+<script src="/besogo/js/gameRoot.js?v=2"></script>
+<script src="/besogo/js/status.js"></script>
+<script src="/besogo/js/svgUtil.js"></script>
+<script src="/besogo/js/cookieUtil.js"></script>
+<script src="/besogo/js/parseSgf.js"></script>
+<script src="/besogo/js/loadSgf.js"></script>
+<script src="/besogo/js/saveSgf.js"></script>
+<script src="/besogo/js/boardDisplay.js"></script>
+<script src="/besogo/js/coord.js"></script>
+<script src="/besogo/js/toolPanel.js"></script>
+<script src="/besogo/js/filePanel.js"></script>
+<script src="/besogo/js/controlPanel.js"></script>
+<script src="/besogo/js/commentPanel.js"></script>
+<script src="/besogo/js/treePanel.js"></script>
+<script src="/besogo/js/diffInfo.js"></script>
+<script src="/besogo/js/scaleParameters.js"></script>
+	<table width="100%" border="0">
+	<tr>
+	<td align="center" width="29%">
+		<div id="health">
+					</div>
+	</td>
+	<td align="center" width="42%">
+	<table>
+	<tr>
+		<td align="center">
+			<div id="playTitle">
+				<a id="playTitleA" href="/sets/view/50/1">Life & Death - Elementary  #1 177/900</a>				<br>
+							</div>
+		</td>
+	</tr>
+	<tr>
+		<td align="center">
+		<div id="titleDescription" class="titleDescription1"><a id="descriptionText">White  to kill.</a> <font color="grey" style="font-style:italic;">(No Ko)</font>		</div>
+		</td>
+	</tr>
+	</table>
+	</td>
+	<td align="center" width="29%">
+			</td>
+	</tr>
+	</table>
+	<div align="center" id="xpDisplayDiv">
+		<table class="xpDisplayTable" border="0" width="70%">
+			<tr>
+			<td style="width:33%;">
+	<div id="xpDisplay">
+		<span id="xpDisplayText"></span>
+		<span id="ratingHeader"></span>
+		<div class="eloTooltip"><span id="ratingGainShort"></span><span class="eloTooltiptext" id="ratingGainLong"></span></div>
+		<span id="ratingSeparator"></span><div class="eloTooltip"><span id="ratingLossShort"></span><span class="eloTooltiptext" id="ratingLossLong"></span></div>
+	</div></td>
+			<td style="width:33%;">
+				<div id="status" align="center" style="color:black;"></div>
+			</td>
+			<td style="width:33%;">
+				<div id="status2" align="center" style="color:black;">
+				<font size="4">
+				11k <font color="grey">(1000)</font>
+				</font>
+				</div>
+			</td>
+			</tr>
+		</table>
+	</div>	<div align="center">
+		<div id="theComment"></div>
+	</div>
+
+	<!-- BOARD -->
+			<div id="target"></div>
+		<div id="targetLockOverlay"></div>
+			<div id="errorMessageOuter" align="center">
+		<div id="errorMessage"></div>
+	</div>
+	
+	<div class="tsumegoNavi1">
+		<div class="tsumegoNavi2">
+			<li class="statusN"><a class="tooltip" href="/1447" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'ebfbbcccdcbe', 'daabbbcbdb',5, 4, 19, '');
+"><div class="setViewButtons1">1</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><span class="gap10"></span><li class="statusN"><a class="tooltip" href="/13778" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'caabdbebcc', 'fafbdcecfcbdcd',5, 3, 19, '');
+"><div class="setViewButtons1">172</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1618" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'aaeacbdbebbccc', 'cafafbfcadbdcded',5, 3, 19, '');
+"><div class="setViewButtons1">173</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1619" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'fbdcecfcadbdcd', 'dbebacbccc',5, 3, 19, '');
+"><div class="setViewButtons1">174</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1620" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'cadbebacbccc', 'eafafbdcecfcbdcd',5, 3, 19, '');
+"><div class="setViewButtons1">175</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13318" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'fabbfbdcecfcadbdcd', 'eacbdbebacbccc',5, 3, 19, '');
+"><div class="setViewButtons1">176</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusV statusCurrent"><a class="tooltip" href="/13780" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'cafafbdcecfcadbdcd', 'aaeacbdbebacbccc',5, 3, 19, '');
+"><div class="setViewButtons1" id="currentNavigationButton">177</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1623" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'faabbbfbecfcbdcdddbf', 'aaeadbebacbcccdc',5, 5, 19, '');
+"><div class="setViewButtons1">178</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1624" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'fadbebfbacbccc', 'badagagbdcecfcgcadbdcd',6, 3, 19, '');
+"><div class="setViewButtons1">179</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13782" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'facbdbebfbacbccc', 'bacadagagbdcecfcgcadbdcd',6, 3, 19, '');
+"><div class="setViewButtons1">180</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1626" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'hbdcecfcgchcbdcd', 'dbebfbgbbccc',7, 3, 19, '');
+"><div class="setViewButtons1">181</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1627" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'aacabbdbbcccbd', 'daeaabebdceccdbece',4, 4, 19, '');
+"><div class="setViewButtons1">182</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><span class="gap10"></span><li class="statusN"><a class="tooltip" href="/13802" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'cadaebfbdccdedaebece', 'baeadbbcccadbd',5, 4, 19, '');
+"><div class="setViewButtons1">200</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li>		</div>
+	</div>
+		<div align="center">
+			<div class="tag-container" align="center">
+			<div class="tag-list"></div>
+			<div style="color:gray;font-size:14px">Daily limit reached.</div>			<div class="add-tag-list-popular"></div>
+			<div class="add-tag-list"></div>
+		</div>
+		<br>
+		<a id="openSgfLink" href="/editor/?setConnectionID=13780&sgfID=1739" style="margin-right:20px;" class="selectable-text"></a><a id="showx3" style="margin-right:20px;" class="selectable-text">Download SGF</a><a id="findSimilarProblems" style="margin-right:20px;" class="selectable-text">Find Similar Problems</a><a id="showFilters" class="selectable-text">Filters<img id="greyArrowFilter" src="/img/greyArrow1.png"></a><br><br><div class="filters-outer">
+				<div id="msgFilters">
+					<div class="active-tiles-container tiles-view"></div>
+				</div>
+			</div><div class="duplicateTable">Is duplicate group:<br><a href="/13780">Life & Death - Elementary 177</a>, <a href="/13781">Tsumego Dictionary Volume I 83</a></div><br>					<label>
+		<input type="checkbox" class="alertCheckbox1" id="customAlertCheckbox" autocomplete="off" />
+		<div class="alertBox alertInfo" id="customAlerts">
+		<div class="alertBanner">
+		Message
+		<span class="alertClose">x</span>
+		</div>
+		<span class="alertText3">
+		<div id="customText"></div>
+		<div class="clear1"></div>
+		</span>
+		</div>
+		</label>
+		
+	</div>	<div class="loader-container">
+		<div class="loader-content">
+			<div class="loader-text">
+				searching...
+		</div>
+		</div>
+			</div>
+		<audio><source src="/sounds/newStone.ogg"></audio>
+<script type="text/javascript">
+	var ko = false,
+		lastMove = false;
+	var lastHover = false,
+		lastX = -1,
+		lastY = -1;
+	var moveCounter = 0;
+	var move = 0;
+	var branch = "";
+	var misplays = 0;
+	var hoverLocked = false;
+	var tryAgainTomorrow = false;
+	var doubleXP = false;
+	var countDownDate = new Date();
+	var revelationUseCount = 0;
+	var multipleChoiceSelected = false;
+	var safetyLock = false;
+	var msg2selected = false;
+	var msg2xselected = false;
+	var msg3selected = false;
+	var msg4selected = false;
+	var msg5selected = false;
+	var msgMCselected = false;
+	var msgSEselected = false;
+	var playedWrong = false;
+	var seconds = 0;
+	var xpInfo = [];
+	var freePlayMode = false;
+	var freePlayMode2 = false;
+	var freePlayMode2done = false;
+	var rw = false;
+	var rwLevel = 0;
+	var rwBranch = 0;
+	var masterArrayPreI = 0;
+	var masterArrayPreJ = 0;
+	var rwSwitcher = 2;
+	var inPath = false;
+	var pathLock = false;
+	var reviewEnabled = false;
+	var theComment = "";
+	var moveHasComment = false;
+	var isIncorrect = false;
+	var thumbsUpSelected = false;
+	var thumbsDownSelected = false;
+	var thumbsUpSelected2 = false;
+	var thumbsDownSelected2 = false;
+	var mode = 1;
+	var timeModeEnabled = true;
+	var timeUp = false;
+	var moveTimeout = 360;
+	var authorProblem = false;
+	var tsumegoID = 2133;
+	var playGreenColor = 'green';
+	var tStatus = "V";
+	var failAlreadyReported = false;
+
+	var tcount = 0;
+	var secondsMultiplier = 16850700;
+	var isCorrect = false;
+	var whiteMoveAfterCorrect = false;
+	var whiteMoveAfterCorrectI = 0;
+	var whiteMoveAfterCorrectJ = 0;
+	var reviewModeActive = false;
+	var ui = 2;
+	var userXP = 0;
+	var previousButtonLink = "/13318";
+	var nextButtonLink = "/1623";
+	var noSkipNextButtonLink = "";
+	var timeModeTimer = (mode == 3 ? new TimeModeTimer() : null);
+	var setID = 50;
+	var isMutable = true;
+	var deleteNextMoveGroup = false;
+	var file = "placeholder2.sgf";
+	var clearFile = "Life & Death - Elementary - 177";
+	var tsumegoFileLink = "2133";
+	var requestSignature = "false";
+	var idForSignature = "-1";
+	var idForSignature2 = "-1";
+	var author = "Joschka Zimdars";
+	var besogoPlayerColor = "black";
+	var favorite = "";
+	var besogoMode2Solved = false;
+	var disableAutoplay = false;
+	var besogoNoLogin = false;
+	var soundParameterForCorrect = false;
+	var sprintSeconds = 120;
+	var tagConnectionsEdit = new TagConnectionsEdit({tsumegoID:2133, isAdmin:false, problemSolved:false, tags: [{name: '1-1 point', isPopular: 0, id: 167, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: '2-1 point', isPopular: 1, id: 127, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'Attack', isPopular: 0, id: 25, isAdded: 0, isApproved: 0, isMine: 0, isHint: 0}
+, {name: 'Bamboo Joint', isPopular: 0, id: 103, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'Belly Attachment Tesuji', isPopular: 0, id: 115, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'Bent Four in the Corner', isPopular: 0, id: 3, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'Breaking Bamboo Clamp', isPopular: 0, id: 155, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'Bulky Five', isPopular: 0, id: 108, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'Carpenter\'s Square', isPopular: 0, id: 121, isAdded: 0, isApproved: 0, isMine: 0, isHint: 0}
+, {name: 'Chuban', isPopular: 0, id: 177, isAdded: 0, isApproved: 0, isMine: 0, isHint: 0}
+, {name: 'Clamp', isPopular: 0, id: 146, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'Comb-Formation', isPopular: 0, id: 139, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'Connect', isPopular: 0, id: 20, isAdded: 0, isApproved: 0, isMine: 0, isHint: 0}
+, {name: 'Crane\'s Nest', isPopular: 0, id: 91, isAdded: 0, isApproved: 0, isMine: 0, isHint: 0}
+, {name: 'Crosscut Tesuji', isPopular: 0, id: 150, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'Damezumari', isPopular: 1, id: 51, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'Descent', isPopular: 0, id: 172, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'Door Group', isPopular: 0, id: 117, isAdded: 0, isApproved: 0, isMine: 0, isHint: 0}
+, {name: 'Double Atari', isPopular: 0, id: 97, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'Double Ko', isPopular: 0, id: 12, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'Driving Tesuji', isPopular: 0, id: 153, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'Enclosure', isPopular: 0, id: 173, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'False Eye', isPopular: 1, id: 40, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'Fuseki', isPopular: 0, id: 24, isAdded: 0, isApproved: 0, isMine: 0, isHint: 0}
+, {name: 'Geta', isPopular: 0, id: 17, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'Golden Chicken Standing on One Leg', isPopular: 0, id: 144, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'Haengma', isPopular: 0, id: 26, isAdded: 0, isApproved: 0, isMine: 0, isHint: 0}
+, {name: 'Hane', isPopular: 0, id: 133, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'Hekomi', isPopular: 0, id: 163, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'J-Group', isPopular: 0, id: 120, isAdded: 0, isApproved: 0, isMine: 0, isHint: 0}
+, {name: 'J+1 Group', isPopular: 0, id: 169, isAdded: 0, isApproved: 0, isMine: 0, isHint: 0}
+, {name: 'Joseki', isPopular: 0, id: 13, isAdded: 0, isApproved: 0, isMine: 0, isHint: 0}
+, {name: 'Ko', isPopular: 1, id: 10, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'L-Group', isPopular: 0, id: 23, isAdded: 0, isApproved: 0, isMine: 0, isHint: 0}
+, {name: 'L+1 Group', isPopular: 0, id: 140, isAdded: 0, isApproved: 0, isMine: 0, isHint: 0}
+, {name: 'L+2 Group', isPopular: 0, id: 161, isAdded: 0, isApproved: 0, isMine: 0, isHint: 0}
+, {name: 'Ladder', isPopular: 0, id: 16, isAdded: 0, isApproved: 0, isMine: 0, isHint: 0}
+, {name: 'Long L Group', isPopular: 0, id: 162, isAdded: 0, isApproved: 0, isMine: 0, isHint: 0}
+, {name: 'Loose ladder', isPopular: 0, id: 123, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'Miai', isPopular: 0, id: 128, isAdded: 0, isApproved: 0, isMine: 0, isHint: 0}
+, {name: 'Monkey Jump', isPopular: 0, id: 96, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'Moyo', isPopular: 0, id: 34, isAdded: 0, isApproved: 0, isMine: 0, isHint: 0}
+, {name: 'Nakade', isPopular: 1, id: 48, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'Nose Tesuji', isPopular: 0, id: 110, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'Oiotoshi', isPopular: 0, id: 28, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'Oshi-tsubushi', isPopular: 0, id: 113, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'Patting the Raccoon\'s Belly', isPopular: 0, id: 95, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'Placement', isPopular: 0, id: 143, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'Probe', isPopular: 0, id: 233, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'Rabbitty Six', isPopular: 0, id: 119, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'Sabaki', isPopular: 0, id: 122, isAdded: 0, isApproved: 0, isMine: 0, isHint: 0}
+, {name: 'Sacrifice', isPopular: 0, id: 100, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'Seki', isPopular: 1, id: 8, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'Semeai', isPopular: 1, id: 4, isAdded: 0, isApproved: 0, isMine: 0, isHint: 0}
+, {name: 'Semeai Type 1', isPopular: 0, id: 135, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'Semeai Type 2', isPopular: 0, id: 116, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'Semeai Type 3', isPopular: 0, id: 134, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'Semeai Type 4', isPopular: 0, id: 136, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'Semeai Type 5', isPopular: 0, id: 137, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'Semeai Type 6', isPopular: 0, id: 138, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'SendingTwoReturningOne', isPopular: 0, id: 171, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'Sente', isPopular: 0, id: 92, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'Separate', isPopular: 0, id: 114, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'Snapback', isPopular: 0, id: 6, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'Spiral Ladder', isPopular: 0, id: 129, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'Squeeze ', isPopular: 0, id: 118, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'Superko', isPopular: 0, id: 19, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'Symmetry', isPopular: 0, id: 99, isAdded: 0, isApproved: 0, isMine: 0, isHint: 0}
+, {name: 'Ten Thousand Year Ko', isPopular: 0, id: 170, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'Throw-in', isPopular: 1, id: 125, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'Tombstone', isPopular: 0, id: 142, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'Tripod Group', isPopular: 0, id: 166, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'tsuke', isPopular: 0, id: 190, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'Tsumego', isPopular: 1, id: 9, isAdded: 1, isApproved: 1, isMine: 0, isHint: 0}
+, {name: 'Two-Headed Dragon', isPopular: 0, id: 156, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'Under the Stones', isPopular: 0, id: 7, isAdded: 0, isApproved: 0, isMine: 0, isHint: 1}
+, {name: 'Weak Carpenter\'s Square', isPopular: 0, id: 124, isAdded: 0, isApproved: 0, isMine: 0, isHint: 0}
+, {name: 'Yose', isPopular: 1, id: 14, isAdded: 0, isApproved: 0, isMine: 0, isHint: 0}
+]});
+	var problemSolved = false;
+	var playerRatingCalculationModifier = 0.5;
+	let multipleChoiceLibertiesB = 0;
+	let multipleChoiceLibertiesW = 0;
+	let multipleChoiceVariance = +"";
+	let multipleChoiceLibertyCount = +"";
+	let multipleChoiceSemeaiType = +"";
+	let multipleChoiceInsideLiberties = +"";
+	let multipleChoiceEnabled = false;
+	let hasChosen = false;
+	let enableDownloads = false;
+	let cvn = true;
+	let adminCommentOpened = false;
+	let customMultipleChoiceAnswer = 0;
+	var boardLockValue = 0;
+	let mText = "";
+	let ratingBarLock = false;
+	let passEnabled = +"";
+	let besogoRotation = -1;
+	let msgFilterSelected = false;
+	const activeTopicTiles = [];
+	const activeDifficultyTiles = [];
+	const activeTagTiles = [];
+
+	function updateCurrentNavigationButton(status)
+	{
+		current = document.getElementById("currentNavigationButton");
+		// The navigation buttons don't exist in all of the modes
+		if (!current)
+			return;
+		current.parentElement.parentElement.className = 'status' + status + ' statusCurrent';
+	}
+
+		$("#showFilters").click(function(){
+		if(!msgFilterSelected){
+			$("#msgFilters").fadeIn(250);
+			document.getElementById("greyArrowFilter").src = "/img/greyArrow2.png";
+	}else{
+			$("#msgFilters").fadeOut(250);
+			document.getElementById("greyArrowFilter").src = "/img/greyArrow1.png";
+	}
+		msgFilterSelected = !msgFilterSelected;
+	});
+
+	$("#msgFilters").css("display", "none");
+
+				drawActiveTiles();
+
+	function drawActiveTiles(){
+		$(".active-tiles-container").html("");
+		for(let i=0;i<activeTopicTiles.length;i++)
+			$(".active-tiles-container").append('<div class="dropdown-tile tile-color1" id="active-tiles-element'+i+'" onclick="removeActiveTopic('+i+')" style="cursor:context-menu">'+activeTopicTiles[i]+'</div>');
+		for(let i=0;i<activeDifficultyTiles.length;i++)
+			$(".active-tiles-container").append('<div class="dropdown-tile tile-color2" id="active-tiles-element'+i+'" onclick="removeActiveDifficulty('+i+')" style="cursor:context-menu">'+activeDifficultyTiles[i]+'</div>');
+		for(let i=0;i<activeTagTiles.length;i++)
+			$(".active-tiles-container").append('<div class="dropdown-tile tile-color3" id="active-tiles-element'+i+'" onclick="removeActiveTag('+i+')" style="cursor:context-menu">'+activeTagTiles[i]+'</div>');
+		if(activeTopicTiles.length>0 || activeDifficultyTiles.length>0 || activeTagTiles.length>0)
+			$(".active-tiles-container").append('<a class="dropdown-tile tile-color4" id="unselect-active-tiles" href="">clear</a><div style="clear:both"</div>');
+	}
+
+	$(".active-tiles-container").on("click", "#unselect-active-tiles", function(e){
+		e.preventDefault();
+		$(".active-tiles-container").html("");
+		setCookie("filtered_sets", "");
+		setCookie("filtered_ranks", "");
+		setCookie("filtered_tags", "");
+		window.location.href = "/tsumegos/play/2133";
+	});
+
+besogoNoLogin = true;besogoPlayerColor = "white";
+
+	
+		function incrementSeconds(){
+			seconds += 1;
+	}
+		var secondsx = setInterval(incrementSeconds, 1000);
+		$(".adminCommentPanel").hide();
+	$(".tsumegoNavi-middle2").hide();
+	$(".tsumegoNavi-middle2").hide();
+	$(".reviewNavi").hide();
+	$("#reviewButton").hide();
+	$("#reviewButton2").hide();
+
+			var showCommentSpace = false;var goldenTsumego = false;var locked=false;var noXP=true;
+	$(document).ready(function(){
+	document.cookie = "ui=2;path=/tsumegos/play;SameSite=Lax";	
+	tagConnectionsEdit.draw();
+	$('.tag-container').on('click', "#open-add-tag-menu", function(e)
+	{
+		tagConnectionsEdit.activateEdit();
+		$("#open-add-tag-menu").hide();
+			$(".add-tag-list").hide();
+			$(".add-tag-list-popular").show();
+		});
+
+	$('.tag-container').on('click', "#open-more-tags", function(e){
+		$("#open-add-tag-menu").hide();
+		$(".add-tag-list").show();
+			$(".add-tag-list-popular").hide();
+		});
+
+		$('#target').click(function(e){
+			if(locked)
+				window.location = nextButtonLink;
+	});
+
+		$("#show").click(function(){
+			if(!msg2selected){
+				$("#msg2").fadeIn(250);
+				document.getElementById("greyArrow1").src = "/img/greyArrow2.png";
+	}else{
+				$("#msg2").fadeOut(250);
+				document.getElementById("greyArrow1").src = "/img/greyArrow1.png";
+	}
+			msg2selected = !msg2selected;
+			});
+
+		$("#show2").click(function(){
+			if(!msg2xselected){
+				$("#msg2x").fadeIn(250);
+				document.getElementById("greyArrow").src = "/img/greyArrow2.png";
+	}else{
+				$("#msg2x").fadeOut(250);
+				document.getElementById("greyArrow").src = "/img/greyArrow1.png";
+	}
+			msg2xselected = !msg2xselected;
+			});
+		$("#msg2x").hide();
+		$("#msg3").hide();
+		$("#show3").click(function(){
+			if(!msg3selected){
+				$("#msg3").fadeIn(250);
+				document.getElementById("greyArrow2").src = "/img/greyArrow2.png";
+	}else{
+				$("#msg3").fadeOut(250);
+				document.getElementById("greyArrow2").src = "/img/greyArrow1.png";
+	}
+			msg3selected = !msg3selected;
+	});
+
+		$("#show4").click(function(){
+			if(!msg4selected){
+				$("#msg4").fadeIn(250);
+				document.getElementById("greyArrow4").src = "/img/greyArrow2.png";
+	}else{
+				$("#msg4").fadeOut(250);
+				document.getElementById("greyArrow4").src = "/img/greyArrow1.png";
+	}
+			msg4selected = !msg4selected;
+		});
+
+		$("#show5").click(function(){
+			if(!msg5selected){
+				$("#msg5").fadeIn(250);
+				document.getElementById("greyArrow5").src = "/img/greyArrow2.png";
+	}else{
+				$("#msg5").fadeOut(250);
+				document.getElementById("greyArrow5").src = "/img/greyArrow1.png";
+	}
+			msg5selected = !msg5selected;
+		});
+				$("#commentPosition").click(function(){
+			let commentContent = $("#CommentMessage").val();
+			let additionalCoords = "";
+			let current = besogo.editor.getCurrent();
+			let besogoOrientation = besogo.editor.getOrientation();
+			if(besogoOrientation[1]=="full-board")
+			besogoOrientation[0] = besogoOrientation[1];
+			let isInTree = besogo.editor.isMoveInTree(current);
+			current = isInTree[0];
+
+			if(isInTree[1]['x'].length>0){
+				for(let i=isInTree[1]['x'].length-1;i>=0;i--)
+				additionalCoords += isInTree[1]['x'][i] + isInTree[1]['y'][i] + " ";
+				additionalCoords = " + " + additionalCoords;
+	}
+			if(commentContent.includes("[current position]")){
+			 commentContent = commentContent.replace('[current position]','');
+	}
+			$("#CommentMessage").val(commentContent + "[current position]" + additionalCoords);
+
+			if(current===null || current.move===null){
+			$("#CommentPosition").val(
+				"-1/-1/0/0/0/0/0/0/0"
+			);
+	}else{
+				pX = -1;
+				pY = -1;
+			if(current.moveNumber>1){
+				pX = current.parent.move.x;
+				pY = current.parent.move.y;
+	}
+			if(current.children.length===0){
+				cX = -1;
+				cY = -1;
+	}else{
+				cX = current.children[0].move.x;
+				cY = current.children[0].move.y;
+	}
+
+			let newP = current.parent;
+			let newPcoords = current.move.x+"/"+current.move.y+"+";
+				while(newP!==null && newP.move!==null){
+					newPcoords += newP.move.x+"/"+newP.move.y+"+"
+					newP = newP.parent;
+	}
+				newPcoords = newPcoords.slice(0, -1);
+			$("#CommentPosition").val(
+				current.move.x+"/"+current.move.y+"/"+pX+"/"+pY+"/"+cX+"/"+cY+"/"+current.moveNumber+"/"+current.children.length+"/"+besogoOrientation[0]+"|"+newPcoords
+			);
+	}
+		});
+		let solutionRequest = true;
+				if(authorProblem)
+			displaySettings();
+		
+				$("#customAlertCheckbox").change(function(){
+			$("#customAlerts").fadeOut(500);
+		});
+		$("#potionAlertCheckbox").change(function(){
+			$("#potionAlerts").fadeOut(500);
+		});
+		$("#showx3").click(function(){
+			jsCreateDownloadFile("Life and Death - Elementary ");
+		});
+		$("#showx4").click(function(){
+			jsCreateDownloadFile("177");
+		});
+		$("#findSimilarProblems").click(function(){
+			$('.loader-container').css({"display": "flex"});
+			window.location.href="/tsumegos/duplicatesearch/13780";
+		});
+
+		var mouseX;
+		var mouseY;
+		$(document).mousemove(function(e){
+			 mouseX = e.pageX;
+			 mouseY = e.pageY;
+		});
+	});
+
+	function displaySolutionRequest(){
+		if(!authorProblem)
+			$("#showx99").css("display", "inline-block");
+	}
+
+	function displaySettings(){
+		$("#showx99").css("display", "none");
+		enableDownloads = true;
+		$("#showx3").css("display", "inline-block");
+		$("#findSimilarProblems").css("display", "inline-block");
+		$("#openSgfLink").css("display", "inline-block");
+			}
+
+	function jsCreateDownloadFile(name){
+		if(enableDownloads){
+			var blob = new Blob(["(;GM[1]FF[4]CA[UTF-8]AP[CGoban:3]ST[2]"+"\n"+"RU[Japanese]SZ[19]KM[0.00]"+"\n"+"PW[white]PB[black]AW[aa][ea][cb][db][eb][ac][bc][cc]AB[ca][fa][fb][dc][ec][fc][ad][bd][cd]"+"\n"+"(;B[bb]"+"\n"+";W[ba]"+"\n"+";B[ab]"+"\n"+";W[ba]"+"\n"+"(;B[da]C[+])"+"\n"+"(;B[aa]"+"\n"+";W[ba]))"+"\n"+"(;B[ba]"+"\n"+";W[bb]))"+"\n"+""],{
+				type: "sgf",
+			});
+			saveAs(blob, name+".sgf");
+	}
+	}
+
+	function reset()
+	{
+		if(!tryAgainTomorrow)
+			locked = false;
+		hoverLocked = false;
+		ko = false, lastMove = false;
+		lastHover = false, lastX = -1, lastY = -1;
+		moveCounter = 0;
+		isCorrect = false;
+		isIncorrect = false;
+		whiteMoveAfterCorrect = false;
+		whiteMoveAfterCorrectI = 0;
+		whiteMoveAfterCorrectJ = 0;
+		disableAutoplay = false;
+		branch = "";
+		rw = false;
+		boardSize = 19;
+				var i, j;
+		tStatus = "V";
+		let heartLoss = !isStatusAllowingInspection(tStatus);
+
+		if (move==0)
+			heartLoss = false;
+		if (noXP || freePlayMode || locked || authorProblem)
+			heartLoss = false;
+		if (mode==2)
+			heartLoss = false;
+		if (failAlreadyReported)
+			heartLoss = false;
+		freePlayMode = false;
+		freePlayMode2 = false;
+		freePlayMode2done = false;
+		if (heartLoss)
+		{
+			misplays++;
+			setCookie('misplays', 'misplays');
+			updateHealth();
+		}
+		move = 0;
+
+		document.getElementById("status").innerHTML = "";
+		document.getElementById("theComment").style.cssText = "display:none;";
+		failAlreadyReported = false;
+	}
+
+	function updateHealth()
+	{
+			}
+
+	function commentPosition(x, y, pX, pY, cX, cY, mNum, cNum, orientation, newX=false, newY=false){
+		positionParams = [];
+		positionParams[0] = x;
+		positionParams[1] = y;
+		positionParams[2] = pX;
+		positionParams[3] = pY;
+		positionParams[4] = cX;
+		positionParams[5] = cY;
+		positionParams[6] = mNum;
+		positionParams[7] = cNum;
+		positionParams[8] = orientation;
+		if(newX!=false)
+			positionParams[9] = newX;
+		besogo.editor.commentPosition(positionParams);
+
+		// Scroll to board so user can see the position
+		var boardElement = document.querySelector('.besogo-container') || document.getElementById('board');
+		if (boardElement) {
+			boardElement.scrollIntoView({
+				behavior: 'smooth',
+				block: 'center'
+			});
+	}
+	}
+
+	function rejuvenation(){
+		$.ajax({
+				url: '/hero/rejuvenation',
+				type: 'POST',
+			success: function(response) {
+					document.getElementById("heart0").src = "/img/heart1small.png";document.getElementById("heart1").src = "/img/heart1small.png";document.getElementById("heart2").src = "/img/heart1small.png";document.getElementById("heart3").src = "/img/heart1small.png";document.getElementById("heart4").src = "/img/heart1small.png";document.getElementById("heart5").src = "/img/heart1small.png";document.getElementById("heart6").src = "/img/heart1small.png";document.getElementById("heart7").src = "/img/heart1small.png";document.getElementById("heart8").src = "/img/heart1small.png";document.getElementById("heart9").src = "/img/heart1small.png";					misplays = 0;
+					disableRejuvenation();
+					enableIntuition();
+	}
+		});
+	}
+
+	function selectFav()
+	{
+		document.getElementById("ans2").innerHTML = "";
+	}
+
+	$(document).keydown(function(event){
+		var keycode = (event.keyCode ? event.keyCode : event.which);
+		if(mode!=2){
+			if(!msg2selected && !adminCommentOpened && !besogo.editor.getReviewMode()){
+				// Don't navigate if focus is on a textarea or text input
+				var activeElement = document.activeElement;
+				var isTextInput = activeElement && (activeElement.tagName === 'TEXTAREA' || (activeElement.tagName === 'INPUT' && activeElement.type === 'text'));
+				if (!isTextInput) {
+					if(keycode == '37') {
+						window.location.href = previousButtonLink;
+					}else if(keycode == '39'){
+						window.location.href =  nextButtonLink;
+					}
+				}
+			}
+		}
+	});
+
+	function m1hover(){
+		$("#modeSwitcher1 label").css("background-color", "#5dcb89");
+	}
+
+	function m1noHover(){
+		if(ui==1) $("#modeSwitcher1 label").css("background-color", "#54b97c");
+		else $("#modeSwitcher1 label").css("background-color", "#5b5d60");
+	}
+
+	function m2hover(){
+		$("#modeSwitcher2 label").css("background-color", "#ca7a6f");
+	}
+
+	function m2noHover(){
+		if(ui==2) $("#modeSwitcher2 label").css("background-color", "#ca6658");
+		else $("#modeSwitcher2 label").css("background-color", "#5b5d60");
+	}
+
+	
+	var coordPopupBoard = null;
+	var coordPopupDiv = null;
+	var coordPopupTimeout = null;
+
+	function createCoordPopup() {
+		if (coordPopupDiv) return;
+		coordPopupDiv = document.createElement("div");
+		coordPopupDiv.id = "coord-popup-board";
+		coordPopupDiv.style.cssText = "position:fixed;z-index:10000;display:none;background:#d4a76a;border:3px solid #8b5a2b;border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,0.3);padding:8px;pointer-events:none;";
+		document.body.appendChild(coordPopupDiv);
+	}
+
+	function showCoordPopup(coord, event) {
+		createCoordPopup();
+		var mainBoard = document.querySelector(".besogo-board svg");
+		if (!mainBoard) return;
+
+		// Always highlight on main board
+		besogo.editor.displayHoverCoord(coord);
+
+		// Clear any pending hide
+		if (coordPopupTimeout) {
+			clearTimeout(coordPopupTimeout);
+			coordPopupTimeout = null;
+	}
+
+		// Show popup near cursor
+		var clone = mainBoard.cloneNode(true);
+		clone.style.width = "400px";
+		clone.style.height = "400px";
+		coordPopupDiv.innerHTML = "";
+		coordPopupDiv.appendChild(clone);
+
+		// Position near cursor
+		var x = event.clientX + 15;
+		var y = event.clientY - 200;
+		if (x + 430 > window.innerWidth) x = event.clientX - 430;
+		if (y < 10) y = 10;
+		if (y + 430 > window.innerHeight) y = window.innerHeight - 430;
+
+		coordPopupDiv.style.left = x + "px";
+		coordPopupDiv.style.top = y + "px";
+		coordPopupDiv.style.display = "block";
+	}
+
+	function hideCoordPopup() {
+		if (coordPopupDiv) coordPopupDiv.style.display = "none";
+		besogo.editor.displayHoverCoord(-1);
+	}
+		
+	function addTimeForMovePlayed(multiplier = 1)
+	{
+		let timeToAdd = 3 * multiplier;
+		tcount += timeToAdd;
+		seconds -= timeToAdd;
+	}
+
+	function displayResult(result)
+	{
+		let success = result == 'S';
+		if (!success && failAlreadyReported)
+			return;
+		setCookie("secondsCheck", Math.round(Math.max(seconds, 0.01).toFixed(2) * secondsMultiplier));
+		setCookie("av", );
+		document.getElementById("status").style.color = "green";
+		if (timeModeTimer)
+			timeModeTimer.stop();
+
+		if (accountWidget)
+			accountWidget.animate(success);
+		if (success)
+		{
+			problemSolved = true;
+			tagConnectionsEdit.onProblemSolved();
+			if (typeof xpStatus !== "undefined" && xpStatus)
+				xpStatus.set('solved', true);
+			setCookie("solvedCheck", "ZkVsT1YxN0h2QVZRSEtEZE51VSsxQT09");
+			updateCurrentNavigationButton('S');
+			document.getElementById("status").innerHTML = "<h2>Correct!</h2>";
+			if(light)
+				$(".besogo-board").css("box-shadow","0 2px 14px 0 rgba(67, 255, 40, 0.7), 0 6px 20px 0 rgba(0, 0, 0, 0.2)");
+			else
+				$(".besogo-board").css("box-shadow","0 2px 14px 0 rgba(67, 255, 40, 0.7), 0 6px 20px 0 rgba(80, 255, 0, 0.2)");
+			besogo.editor.setReviewEnabled(true);
+			besogo.editor.setControlButtonLock(false);
+			noLastMark = true;
+			$("#besogo-review-button-inactive").attr("id","besogo-review-button");
+			$("#commentSpace").show();
+
+			if (mode != 2)
+			{//mode 1 and 3 correct
+				if(mode == 3)
+				{
+					timeModeEnabled = false;
+					$("#time-mode-countdown").css("color","green");
+					$("#reviewButton").show();
+					$("#reviewButton-inactive").hide();
+				}
+				if(!noXP)
+				{
+					if (goldenTsumego)
+						setCookie("type", "g");
+					noXP = true;
+				}
+			}
+			else
+			{//mode 2 correct
+				besogoMode2Solved = true;
+				if (!noXP)
+				{
+					setCookie("mode", mode);
+					if(goldenTsumego)
+						setCookie("type", "g");
+					noXP = true;
+				}
+			}
+			toggleBoardLock(true);
+			displaySettings();
+		}
+		else //incorrect
+		{
+			failAlreadyReported = true;
+			misplays++;
+			// Don't lock board - let user keep trying
+			if (mode != 2)
+			{
+				branch = "no";
+				document.getElementById("status").style.color = "#e03c4b";
+				document.getElementById("status").innerHTML = "<h2>Incorrect</h2>";
+				if (light)
+					$(".besogo-board").css("box-shadow","0 2px 14px 0 rgba(183, 19, 19, 0.8), 0 6px 20px 0 rgba(183, 19, 19, 0.2)");
+				else
+					$(".besogo-board").css("box-shadow","0 2px 14px 0 rgb(225, 34, 34), 0 6px 20px 0 rgba(253, 59, 59, 0.58)");
+				if (mode==3)
+				{
+					timeModeEnabled = false;
+					$("#time-mode-countdown").css("color","#e45663");
+					toggleBoardLock(true);
+				}
+				noLastMark = true;
+				if (!noXP)
+				{
+					if(!freePlayMode)
+					{
+						hoverLocked = false;
+						if (mode == 1)
+							updateHealth();
+					}
+					freePlayMode = true;
+					if (mode == 1)
+					{
+						if(1000 - misplays <= 0)
+						{
+							updateCurrentNavigationButton('F');
+							document.getElementById("status").innerHTML = '<b style="font-size:17px">Try again tomorrow</b>';
+							tryAgainTomorrow = true;
+							toggleBoardLock(true);
+						}
+					}
+					if (goldenTsumego)
+						window.location.href = '/' + '13780';
+				}
+			}
+			else
+			{//mode 2 incorrect
+				branch = "no";
+				document.getElementById("status").style.color = "#e03c4b";
+				document.getElementById("status").innerHTML = "<h2>Incorrect</h2>";
+				noLastMark = true;
+				besogoMode2Solved = true;
+				setCookie("mode", mode);
+				if (light)
+					$(".besogo-board").css("box-shadow","0 2px 14px 0 rgba(183, 19, 19, 0.8), 0 6px 20px 0 rgba(183, 19, 19, 0.2)");
+				else
+					$(".besogo-board").css("box-shadow","0 2px 14px 0 rgb(225, 34, 34), 0 6px 20px 0 rgba(253, 59, 59, 0.58)");
+				if (!noXP)
+				{
+					playedWrong = true;
+					setCookie("transition", 2);
+					hoverLocked = false;
+					freePlayMode = true;
+				}
+			}
+			setCookie("misplays", misplays);
+		}
+	}
+
+	function toggleBoardLock(t, multipleChoice=false)
+	{
+		if (tryAgainTomorrow)
+			t = true;
+		if (t)
+			boardLockValue = 1;
+		else
+			boardLockValue = 0;
+		if(multipleChoice)
+			multipleChoiceEnabled = true;
+	}
+
+	function displayMessage(message='text', topic='Message', color='red')
+	{
+		$('#customText').html(message);
+		$("#customAlerts").fadeIn(500);
+		if (color==='red')
+			$(".alertBanner").addClass("alertBannerIncorrect");
+		else
+			$(".alertBanner").addClass("alertBannerCorrect");
+		$(".alertBanner").html(topic+"<span class=\"alertClose\">x</span>");
+	}
+
+	function resetParameters(isAtStart)
+	{
+		tStatus = "V";
+		if(tStatus=="S" || tStatus=="C")
+			heartLoss = false;
+		else
+			heartLoss = true;
+		if(isAtStart)
+			heartLoss = false;
+		if (noXP || freePlayMode || locked || authorProblem)
+			heartLoss = false;
+		if (failAlreadyReported)
+			heartLoss = false;
+
+		freePlayMode = false;
+		if (heartLoss)
+		{
+			misplays++;
+			if (accountWidget)
+				accountWidget.animate(false);
+			setCookie("secondsCheck", Math.round(Math.max(seconds, 0.01).toFixed(2) * secondsMultiplier));
+			setCookie("misplays", misplays);
+			updateHealth();
+		}
+		failAlreadyReported = false;
+	}
+	</script>
+		<script type="text/javascript">
+	(function() {
+		var options = { },
+			searchString = location.search.substring(1),
+			params = searchString.split("&"),
+			div = document.getElementById('target'),
+			i, value;
+
+		for (i = 0; i < params.length; i++){
+			value = params[i].split("=");
+			options[value.shift()] = value.join("=");
+	}
+
+		options.panels = "tree+control";
+				options.tsumegoPlayTool = 'auto';
+		options.realstones = true;
+		options.nowheel = true;
+		options.nokeys = true;
+		options.multipleChoice = false;
+		options.multipleChoiceSetup = [];
+		options.alternativeResponse = true;
+				const cornerArray = ['top-left', 'top-right', 'bottom-left', 'bottom-right'];
+		shuffledCornerArray = cornerArray.sort((a, b) => 0.5 - Math.random());
+		options.corner = shuffledCornerArray[0];
+		options.playerColor = besogoPlayerColor;
+		options.rootPath = '/besogo/';
+		options.theme = 'texture8';
+		options.themeParameters = ['black.png', 'white.png'];
+		options.coord = 'western';
+		options.sgf = '/placeholder.sgf';
+		options.sgf2 = "(;GM[1]FF[4]CA[UTF-8]AP[CGoban:3]ST[2]"+"\n"+"RU[Japanese]SZ[19]KM[0.00]"+"\n"+"PW[white]PB[black]AW[aa][ea][cb][db][eb][ac][bc][cc]AB[ca][fa][fb][dc][ec][fc][ad][bd][cd]"+"\n"+"(;B[bb]"+"\n"+";W[ba]"+"\n"+";B[ab]"+"\n"+";W[ba]"+"\n"+"(;B[da]C[+])"+"\n"+"(;B[aa]"+"\n"+";W[ba]))"+"\n"+"(;B[ba]"+"\n"+";W[bb]))"+"\n"+"";
+		options.light = "light";
+		if (options.theme) addStyleLink('/besogo/css/board-'+options.theme+'.css');
+			if (options.height && options.width && options.resize === 'fixed')
+			{
+				div.style.height = options.height + 'px';
+				div.style.width = options.width + 'px';
+			}
+		options.reviewMode = false;
+		options.reviewEnabled = false;
+		if(authorProblem)
+		options.reviewEnabled = true;
+	besogo.create(div, options);
+	besogo.editor.setAutoPlay(true);
+	besogo.editor.registerAddTimeForMovePlayed(addTimeForMovePlayed);
+	besogo.editor.registerDisplayResult(displayResult);
+	besogo.editor.registerShowComment(function(commentText)
+		{
+			$("#theComment").css("display", commentText.length == 0 ? "none" : "block");
+			$("#xpDisplayDiv").css("display", commentText.length == 0 ? "block" : "none");
+			$("#theComment").text(commentText);
+
+		});
+
+		function addStyleLink(cssURL)
+		{
+			var element = document.createElement('link');
+			element.href = cssURL;
+			element.type = 'text/css';
+			element.rel = 'stylesheet';
+			document.head.appendChild(element);
+		}
+	})();
+	if (mode == 2)
+		$("#targetLockOverlay").css('top', '235px');
+		</script>
+	<style>
+		#msg2,
+		#msg4,
+		#msg5 {
+			display: none;
+	}
+
+	.besogo-panels {
+		display: none;
+		flex-basis: 50%;
+	}
+
+		#msgFilters{
+			display:inline-block;
+			margin:0 4px 8px
+	}
+
+	#showFilters,
+	.showFilters {
+				display:none;margin: 8px 4px;
+	}
+	</style>
+	</div>
+	</div>
+	</div>
+<div id="footer" class="footerLinks">
+	<div class="footer-space"></div>
+
+	<div class="footer-space"></div>
+		<div class="footer-element">
+		Supported by Wube Software
+		</div>
+		<div class="footer-element">
+		<a href="https://www.factorio.com">
+			<img src="/img/wube-software-logo.png" title="Wube Software" alt="Wube Software">
+			</a>
+		</div>
+	<div class="footer-space"></div>
+		<div class="footer-element">
+			Tsumego Hero ┬⌐ 2026	</div>
+		<div class="footer-element">
+		<a href="mailto:joschka.zimdars@googlemail.com">joschka.zimdars@googlemail.com</a>
+	</div>
+		<div class="footer-element">
+		<a href="/sites/impressum">Legal notice</a>
+	</div>
+		<div class="footer-element">
+		<a href="/users/authors">About</a>
+	</div>
+	<br><br><br>
+	</div>
+<script type="text/javascript">
+	var accountWidget =null;	var lifetime = new Date();
+
+	lifetime.setTime(lifetime.getTime()+8*24*60*60*1000);
+	lifetime = lifetime.toUTCString()+"";
+	setCookie("mode", 1);	let light = true;
+	function updateSoundValue(value)
+	{
+		if (typeof besogo !== 'undefined')
+		{
+			if(typeof value === 'undefined' || value === null)
+				value = false;
+			besogo.editor.setSoundEnabled(value);
+		}
+		soundsEnabled = value;
+	}
+
+	setCookie("lightDark", "light");
+	setCookie("lastProfileLeft", "1");
+	setCookie("lastProfileRight", "2");
+	setCookie("type", "0");
+	setCookie("texture", "0");
+			var soundsEnabled = true;
+	var notMode3 = true;
+
+		soundValue = getCookie("sound");
+		updateSoundValue(soundValue == 'on');
+
+	$(document).ready(function(){
+		if(soundValue=="off")
+		{
+			document.getElementById("soundButtonImage").src="/img/sound-icon2.png";
+			setCookie("sound", "off");
+			updateSoundValue(false);
+		}
+		if(soundValue=="on")
+		{
+			document.getElementById("soundButtonImage").src="/img/sound-icon1.png";
+			setCookie("sound", "on");
+			updateSoundValue(true);
+		}
+
+		$("#adminLink-more").click(function(){
+			$(".additional-adminLink").show();
+			$(".additional-adminLink2").hide();
+		});
+
+					});
+
+	function updateCookie(c1,c2)
+	{
+		document.cookie = c1+c2;
+	}
+
+	function logoHover(img)
+	{
+		img.src = '/img/tsumegoHero2.png';
+	}
+
+	function logoNoHover(img)
+	{
+		img.src = "/img/tsumegoHero1.png";
+	}
+
+	function boardsHover(){
+		document.getElementById("boardsInMenu").style.color = "#74D14C";
+		document.getElementById("boardsInMenu").style.backgroundColor = "grey";
+	}
+
+	function boardsNoHover(){
+		document.getElementById("boardsInMenu").style.color = "#d19fe4";
+		document.getElementById("boardsInMenu").style.backgroundColor = "transparent";
+	}
+
+	function check1(){
+		if(document.getElementById("dropdown-1").checked == true){
+			document.getElementById("dropdowntable").style.display = "inline-block";
+			document.getElementById("dropdowntable2").style.display = "inline-block";
+			$(".dropdown-inner").css("opacity", "1");
+			$(".dropdown-inner").css("display", "inline-block");
+	}
+		if(document.getElementById("dropdown-1").checked == false){
+			document.getElementById("dropdowntable").style.display = "none";
+			document.getElementById("dropdowntable2").style.display = "none";
+			$(".dropdown-inner").css("opacity", "0");
+			$(".dropdown-inner").css("display", "none");
+	}
+	}
+	$("#check3").click(function(e){
+		if(document.getElementById("dropdown-1").checked == true){
+			document.getElementById("dropdown-1").checked = false;
+		}else{
+			document.getElementById("dropdown-1").checked = true;
+	}
+		check1();
+		e.stopPropagation();
+	});
+
+	$("#dropdown-inner-propagation").click(function(e){
+		e.stopPropagation();
+	});
+
+	function changeSound()
+	{
+		if(getCookie("sound")=="off")
+		{
+			document.getElementById("soundButtonImage").src="/img/sound-icon1.png";
+			document.cookie = "sound=on;path=/";
+			document.cookie = "sound=on;path=/sets/view";
+			document.cookie = "sound=on;path=/tsumegos/play";
+			document.cookie = "sound=on;path=/users";
+			document.cookie = "sound=on;path=/users/view";
+			updateSoundValue(true);
+		}
+		else if(getCookie("sound")=="on")
+		{
+			document.getElementById("soundButtonImage").src="/img/sound-icon2.png";
+			document.cookie = "sound=off;path=/";
+			document.cookie = "sound=off;path=/sets/view";
+			document.cookie = "sound=off;path=/tsumegos/play";
+			document.cookie = "sound=off;path=/users";
+			document.cookie = "sound=off;path=/users/view";
+			updateSoundValue(false);
+		}
+		else
+		{
+			document.getElementById("soundButtonImage").src="/img/sound-icon2.png";
+			document.cookie = "sound=off;path=/";
+			document.cookie = "sound=off;path=/sets/view";
+			document.cookie = "sound=off;path=/tsumegos/play";
+			document.cookie = "sound=off;path=/users";
+			document.cookie = "sound=off;path=/users/view";
+			updateSoundValue(false);
+		}
+	}
+
+	function getCookie(cname){
+		var name = cname + "=";
+		var decodedCookie = decodeURIComponent(document.cookie);
+		var ca = decodedCookie.split(';');
+		for(var i = 0; i<ca.length; i++){
+			var c = ca[i];
+			while (c.charAt(0) == ' '){
+				c = c.substring(1);
+	}
+			if (c.indexOf(name) == 0){
+				return c.substring(name.length, c.length);
+	}
+	}
+		return "";
+	}
+
+	function sandboxHover(){
+		if(document.getElementById("sandboxLink")) document.getElementById("sandboxLink").style.display = "inline-block";
+		if(document.getElementById("collectionsInMenu")) document.getElementById("collectionsInMenu").style.color = "#74d14c";
+		if(document.getElementById("collectionsInMenu")) document.getElementById("collectionsInMenu").style.backgroundColor = "grey";
+	}
+
+	function sandboxNoHover(){
+		if(document.getElementById("sandboxLink")) document.getElementById("sandboxLink").style.display = "none";
+		if(document.getElementById("collectionsInMenu")) document.getElementById("collectionsInMenu").style.backgroundColor = "rgba(0,0,0,0)";
+		if(document.getElementById("collectionsInMenu")) document.getElementById("collectionsInMenu").style.color = "#d19fe4";
+	}
+
+	function leaderboardHover(){
+		if(document.getElementById("leaderboardLink")) document.getElementById("leaderboardLink").style.display = "inline-block";
+		if(document.getElementById("highscoreInMenu")) document.getElementById("highscoreInMenu").style.color = "#74d14c";
+		if(document.getElementById("highscoreInMenu")) document.getElementById("highscoreInMenu").style.backgroundColor = "grey";
+	}
+
+	function leaderboardNoHover(){
+		if(document.getElementById("leaderboardLink")) document.getElementById("leaderboardLink").style.display = "none";
+		if(document.getElementById("highscoreInMenu")) document.getElementById("highscoreInMenu").style.backgroundColor = "rgba(0,0,0,0)";
+		if(document.getElementById("highscoreInMenu")) document.getElementById("highscoreInMenu").style.color = "#d19fe4";
+	}
+
+	function upgradeHover2(){
+		document.getElementById("donateH2").src = '/img/upgradeButton1h.png';
+	}
+
+	function upgradeNoHover2(){
+		document.getElementById("donateH2").src = "/img/upgradeButton1.png";
+	}
+
+	function donateHover2(){
+		document.getElementById("donateH2").src = '/img/donateButton1h.png';
+	}
+
+	function donateNoHover2(){
+		document.getElementById("donateH2").src = "/img/donateButton1.png";
+	}
+
+	function deleteAllCookies()
+	{
+		const cookies = document.cookie.split(";");
+
+		for (let i = 0; i < cookies.length; i++)
+		{
+			const cookie = cookies[i];
+			const eqPos = cookie.indexOf("=");
+			const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+			document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+		}
+	}
+
+	boardSelector = new BoardSelector(255n);
+</script>
+		<style>.outerMenu1{left: 224px;}</style></body>
+
+</html>
+
+<head>

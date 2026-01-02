@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>
+Life & Death - Elementary #1 on Tsumego Hero</title>
+<meta name="description" content="Interactive tsumego database. Solve go problems, get stronger, level up, have fun.">
+<meta name="keywords" content="tsumego, problems, puzzles, baduk, weiqi, tesuji, life and death, solve, solving, hero, go, in-seong, level" >
+<meta name="Author" content="Joschka Zimdars">
+<meta property="og:title" content="Tsumego Hero">
+<link rel="stylesheet" type="text/css" href="/cache_css/app.v1767350141.css"/><link rel="stylesheet" id="dark-theme-css" href="/cache_css/dark-theme.v1767350141.css" disabled /><link rel="stylesheet" id="light-theme-css" href="/cache_css/light-theme.v1767350141.css" /><link href="/favicon.ico" type="image/x-icon" rel="icon"/><link href="/favicon.ico" type="image/x-icon" rel="shortcut icon"/><script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.8/dist/htmx.min.js" integrity="sha384-/TgkGk7p307TH7EXJDuUlgG3Ce1UVolAOFopFekQkkXihi5u/6OCvVKyz1W+idaz" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/idiomorph@0.3.0/dist/idiomorph-ext.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.3/dist/cdn.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.6/Sortable.min.js"></script>
+<script type="text/javascript" src="/cache_js/app.v1767350140.js"></script></head>
+
+<body class="light-theme">
+<div id="container" align="center">
+	<div width="100%" class="whitebox1">
+		<div align="left">
+			<a href="/">
+							<img id="logo1" alt="Tsumego Hero" title="Tsumego Hero" src="/img/tsumegoHero1.png" onmouseover="logoHover(this)" onmouseout="logoNoHover(this)" height="55px">
+			</a>
+		</div>
+		<div class="outerMenu1">
+							<div id="newMenu">
+				<nav>
+					<ul>
+						<li><a class="homeMenuLink" href="/"  >Home</a><ul class="newMenuLi1"><li><a id="tutorialLink" href="/sites/websitefunctions" >Functions & Modes</a></li><li><a id="tutorialLink" href="/sites/gotutorial" >Go Rules</a></li><li><a id="forumLink" href="/forums">Forums</a></li><li><a href="/users/authors" >About</a></li></ul></li><li><a  style="color:#74d14c;" href="/sets">Collections</a></li><li><a class="homeMenuLink"  href="/tsumegos/play/2133">Play</a><ul class="newMenuLi3"><li><a href="/tsumegos/play/2133?mode=1" >Level</a></li></ul><li><a   href="/users/highscore">Highscore</a><ul class="newMenuLi4"><li><a id="tutorialLink" href="/users/highscore" >Level Highscore</a></li><li><a id="tutorialLink" href="/users/rating" >Rating Highscore</a></li><li><a id="tutorialLink" href="/users/achievements" >Achievement Highscore</a></li><li><a id="tutorialLink" href="/users/added_tags" >Tag Highscore</a></li><li><a id="tutorialLink" href="/users/leaderboard" >Daily Highscore</a></li></ul><li><a style="color:#aaa;">Discuss</a></li><li class="menuIcons1">
+						<a href="#" id="soundButton" onclick="changeSound(); return false;"><img id="soundButtonImage" src="/img/sound-icon1.png" width="25px"></a>
+					</li>						<li class="menuIcons1">
+							<div class="dropdown" id="check3">
+								<label for="dropdown-1" id="boardsInMenu" class="dropdown-button">
+									<img id="boardsButtonImage" src="/img/boards-icon1.png" width="25px">
+								</label>
+								<input class="dropdown-open" type="checkbox" id="dropdown-1" style="display:none;" onchange="check1()">
+								<label for="dropdown-1" class="dropdown-overlay"></label>
+								<div class="dropdown-inner" id="dropdown-inner-propagation">
+									<table id="dropdowntable" border="0"></table>
+									<br>
+									<div id="dropdowntable2" align="center">
+										<a class="new-button" href="/sets/view/50/1">Save</a>
+										<br><br>
+									</div>
+									</div>
+									</div>
+						</li>
+						<li class="menuIcons1">
+							<a class="menuIcons2" id="darkButton" onclick="darkAndLight();"><img id="darkButtonImage"></a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+			</div>
+		<div class="outerMenu2">
+			<li><a></a></li>
+			</div>
+		<div class="outerMenu3">
+			<li><a class="menuLi" id="signInMenu" href="/users/login">Sign In</a></li>		</div>
+
+		</div>
+				<div width="100%" align="left" class="whitebox2">
+		<a id="refreshLinkToDiscuss"></a><div id="content" ></script>
+	<div class="homeRight">
+		<p class="title4">Problems</p>
+		<div class="showFilters">
+			<a id="showFilters" class="selectable-text">Filters<img id="greyArrowFilter" src="/img/greyArrow1.png"></a>
+		</div>
+		<div id="msgFilters">
+			<div class="active-tiles-container tiles-view"></div>
+		</div>
+		<div class="set-view-main">
+		<li class="statusN"><a class="tooltip" href="/1447" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'ebfbbcccdcbe', 'daabbbcbdb',5, 4, 19, '');
+"><div class="setViewButtons1">1</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1448" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'abbbcbdbeb', 'caeafbacbcccdcecfc',5, 2, 19, '');
+"><div class="setViewButtons1">2</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13315" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'eaabbbcbdb', 'dafafbacbcccdcec',5, 2, 19, '');
+"><div class="setViewButtons1">3</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1450" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'abbbcbdb', 'aacaebbcccdcec',4, 2, 19, '');
+"><div class="setViewButtons1">4</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13694" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'acbcccdcecfcfbbadafa', 'abbbcbdbebea',5, 2, 19, '');
+"><div class="setViewButtons1">5</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1452" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'ebfbbcccdcbe', 'baeaabbbcbdb',5, 4, 19, '');
+"><div class="setViewButtons1">6</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1453" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'fbbcccdcecfcbe', 'baabbbcbdb',5, 4, 19, '');
+"><div class="setViewButtons1">7</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1454" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'bbcbdbeb', 'bcccdcecfcgchcbe',7, 4, 19, '');
+"><div class="setViewButtons1">8</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1455" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'fbhbbcccdcecfcbe', 'abbbcbdbeb',7, 4, 19, '');
+"><div class="setViewButtons1">9</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1456" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'faabbbcbdbeb', 'caeafbgbacbcccdcec',6, 2, 19, '');
+"><div class="setViewButtons1">10</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1457" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'fbgbbcccdcecbe', 'bafaabbbcbdb',6, 4, 19, '');
+"><div class="setViewButtons1">11</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1458" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'eafbgbbcccdcecbe', 'bafaabbbcbdbeb',6, 4, 19, '');
+"><div class="setViewButtons1">12</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1459" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'eagbbcccdcecfcgcbe', 'baabbbcbdbeb',6, 4, 19, '');
+"><div class="setViewButtons1">13</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1460" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'gbbcccdcecfchcbe', 'abbbcbdbeb',7, 4, 19, '');
+"><div class="setViewButtons1">14</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1461" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'fagbbcccdcecfcgcbe', 'abbbcbdbebfb',6, 4, 19, '');
+"><div class="setViewButtons1">15</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1462" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'fagbhbbcccdcecfcbe', 'gaabbbcbdbebfb',7, 4, 19, '');
+"><div class="setViewButtons1">16</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1463" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'eacbdbebccbdcd', 'fafbbcdcecgcadddbecede',6, 4, 19, '');
+"><div class="setViewButtons1">17</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1464" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'fafbbcdcecgcbdcdbede', 'eabbcbdbebaccc',6, 4, 19, '');
+"><div class="setViewButtons1">18</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1465" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'fbhbccdcecfcbdce', 'bbcbdbebbc',7, 4, 19, '');
+"><div class="setViewButtons1">19</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1466" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'eabbcbdbebac', 'cafafbccdcecfcadbd',5, 3, 19, '');
+"><div class="setViewButtons1">20</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1467" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'adbabdcacccedcecfafb', 'acbbbccbdbea',5, 4, 19, '');
+"><div class="setViewButtons1">21</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13695" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'eabbcbdbebac', 'cafafbccdcecfcadbd',5, 3, 19, '');
+"><div class="setViewButtons1">22</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13697" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'dbcbbdbcbb', 'ecebdccecdccbe',4, 4, 19, '');
+"><div class="setViewButtons1">23</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1470" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'dbfbccdccdaebece', 'cabbcbbcadbd',5, 4, 19, '');
+"><div class="setViewButtons1">24</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1471" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'dabbcbdbacbc', 'baebgbccdcecbdcdbf',6, 5, 19, '');
+"><div class="setViewButtons1">25</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1472" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'bacafbhbccdcecfcbdcdbf', 'eabbcbdbebacbc',7, 5, 19, '');
+"><div class="setViewButtons1">26</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1473" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'aabaebgbccdceccdbecebg', 'dabbcbdbbcadbd',6, 6, 19, '');
+"><div class="setViewButtons1">27</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1474" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'baebccdceccdbece', 'dabbcbdbbcadbd',4, 4, 19, '');
+"><div class="setViewButtons1">28</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1475" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'aabacaabebccdceccdbece', 'dabbcbdbbcadbd',4, 4, 19, '');
+"><div class="setViewButtons1">29</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1476" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'dabbcbdbbcadbd', 'aabacaabebccdceccdbece',4, 4, 19, '');
+"><div class="setViewButtons1">30</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1477" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'ecebeadccecdcccabeba', 'dbdacbbdbcbbad',4, 4, 19, '');
+"><div class="setViewButtons1">31</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1478" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'abebdceccdbece', 'dacbdbbcccadbd',4, 4, 19, '');
+"><div class="setViewButtons1">32</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1479" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'bacaabfbacccdcecfccdaebece', 'bbcbdbebbcadbd',5, 4, 19, '');
+"><div class="setViewButtons1">33</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1480" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'bacafbhbdcecfccdaebece', 'dabbdbebbcccadbd',7, 4, 19, '');
+"><div class="setViewButtons1">34</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1481" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'baeacbdbeb', 'dafbccdcecfcadbd',5, 3, 19, '');
+"><div class="setViewButtons1">35</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1482" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'accbdbeaeb', 'aaadbdcacddadcecfbfc',5, 3, 19, '');
+"><div class="setViewButtons1">36</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1483" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'aaeaabcbdbeb', 'badafbccdcecfcadbd',5, 3, 19, '');
+"><div class="setViewButtons1">37</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13699" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'aacaeacbdbebbc', 'bbfbdcecgcadbdcd',6, 3, 19, '');
+"><div class="setViewButtons1">38</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1485" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'caeaabcbdbebbcbd', 'babbfbccdcecfcadcdaebece',5, 4, 19, '');
+"><div class="setViewButtons1">39</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1486" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'caabcbdbebacbcbd', 'babbfbhbccecfcadcdaebece',7, 4, 19, '');
+"><div class="setViewButtons1">40</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1487" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'abcbdbacccbd', 'ebdcecadcdaebece',4, 4, 19, '');
+"><div class="setViewButtons1">41</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1488" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'cafbecgcadbdcddd', 'eaabcbebacccdc',6, 3, 19, '');
+"><div class="setViewButtons1">42</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1489" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'abbbdbebdc', 'fbacbcecgcbdcddded',6, 3, 19, '');
+"><div class="setViewButtons1">43</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13701" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'cafafbdcecfccdaebece', 'eaabcbdbebacccbd',5, 4, 19, '');
+"><div class="setViewButtons1">44</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1491" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'abbbdbebcccd', 'facbfbdcecfcadddbece',5, 4, 19, '');
+"><div class="setViewButtons1">45</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1492" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'babbcbccddebecfb', 'abbcbdcdcfdeedfcfdgbhc',7, 5, 19, '');
+"><div class="setViewButtons1">46</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1493" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'dacbdbacbc', 'eaebccdcecadbd',4, 3, 19, '');
+"><div class="setViewButtons1">47</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13703" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'dadbacbcdc', 'eaebecadbdcddded',4, 3, 19, '');
+"><div class="setViewButtons1">48</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13705" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'dabbdbbcdc', 'eaebecadbdcddded',4, 3, 19, '');
+"><div class="setViewButtons1">49</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1496" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'eaebccecbdddfdbede', 'dabbdbacbcdccd',5, 4, 19, '');
+"><div class="setViewButtons1">50</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1497" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'babbfbbcdcec', 'fagbfcgcadbdcddded',6, 3, 19, '');
+"><div class="setViewButtons1">51</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13183" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'fafbacecfcadbdcddd', 'baabbbdbebbc',5, 3, 19, '');
+"><div class="setViewButtons1">52</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1499" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'aaeaabbbcbebec', 'bafafbccfcbdddedfd',5, 3, 19, '');
+"><div class="setViewButtons1">53</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13708" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'dabbdbbcadbd', 'baeaebacdcecaebecede',4, 4, 19, '');
+"><div class="setViewButtons1">54</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1501" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'eacbebbcccadcd', 'fabbfbdcecfcbdbecedebf',5, 5, 19, '');
+"><div class="setViewButtons1">55</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1502" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'fafbbcccfccddded', 'baabbbcbebdc',5, 3, 19, '');
+"><div class="setViewButtons1">56</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1503" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'cahadbhbbcccdcecgchd', 'daeagaabbbcbebfbgb',7, 3, 19, '');
+"><div class="setViewButtons1">57</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13711" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'eafafbbcfcbdedfdcede', 'cadaabbbcbebccecdd',5, 4, 19, '');
+"><div class="setViewButtons1">58</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13713" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'bafabbfbacfcbdfdbecedeeefe', 'daabcbbccceccddded',5, 4, 19, '');
+"><div class="setViewButtons1">59</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13715" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'bbcbccdaddecedfc', 'abbcbecddeeefdgagbgcgd',6, 4, 19, '');
+"><div class="setViewButtons1">60</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13717" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'gaabgbbcgcbdfdgdcedeee', 'dabbcbfbccfccddded',6, 4, 19, '');
+"><div class="setViewButtons1">61</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1508" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'eaabgbbcdcgcbdcdfdgdceeedfefcg', 'badafabbcbccecfcddedde',6, 6, 19, '');
+"><div class="setViewButtons1">62</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1509" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'iadbdcfcicjcbdddedidheefgf', 'badaabbbcbebgbechcfdgd',9, 5, 19, '');
+"><div class="setViewButtons1">63</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1510" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'fafbfcadddfdbeceee', 'abbbdbbcdcecbd',5, 4, 19, '');
+"><div class="setViewButtons1">64</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1511" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'abebechcbdedeebfcfdf', 'babbcbdbacbcddde',7, 5, 19, '');
+"><div class="setViewButtons1">65</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1512" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'bbdbebfbaccccd', 'gbbcdcfcgcbdddbecede',6, 4, 19, '');
+"><div class="setViewButtons1">66</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13719" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'dafaabdbebfbcc', 'gacbgbdcecfcgcbdcd',6, 3, 19, '');
+"><div class="setViewButtons1">67</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1514" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'dafaabbbdbebfb', 'gacbgbacbcdcecfcgcbdcd',6, 3, 19, '');
+"><div class="setViewButtons1">68</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1515" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'badabbcbdbfbdc', 'abgbbcfcgcbdddcefe',6, 4, 19, '');
+"><div class="setViewButtons1">69</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1516" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'bbcbdbfbgbhb', 'abibbcdcfchcicbdddfd',8, 3, 19, '');
+"><div class="setViewButtons1">70</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1517" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'bafagbibgcbdcdddedfdaebe', 'caeabbcbdbebfbad',8, 4, 19, '');
+"><div class="setViewButtons1">71</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13723" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'eaabgbfcgcadbdcddded', 'babbfbacbcccdcec',6, 3, 19, '');
+"><div class="setViewButtons1">72</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13725" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'babbacbcccdcecfc', 'cafadbgbgcadbdcdddedfdgd',6, 3, 19, '');
+"><div class="setViewButtons1">73</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1520" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'babbacbcbdcddded', 'cbebccfcadfdaebecedeee',5, 4, 19, '');
+"><div class="setViewButtons1">74</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13727" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'dabbcbdbbd', 'bacaebdcfcddaebece',5, 4, 19, '');
+"><div class="setViewButtons1">75</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1522" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'adbbbdcbdadb', 'abaebabecacedcddebfc',5, 4, 19, '');
+"><div class="setViewButtons1">76</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1523" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'bddbdeebeefbfcfdfegbhb', 'cbcccecfdddfecedfggcgegfhcibic',8, 6, 19, '');
+"><div class="setViewButtons1">77</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1524" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'cacbebgbccdcgcfdbecedeeefebg', 'babbfbbcecbdcddded',6, 6, 19, '');
+"><div class="setViewButtons1">78</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1525" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'bbcbebacecdded', 'fafbbcfcbdcdfdcedeee',5, 4, 19, '');
+"><div class="setViewButtons1">79</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13729" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'bbcbccebfcgagbgc', 'abbcbdcdddecedfdgdhahbhchd',7, 3, 19, '');
+"><div class="setViewButtons1">80</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1527" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'cagacbdbfbgbec', 'bbhbbcccdcfcgchced',7, 3, 19, '');
+"><div class="setViewButtons1">81</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1528" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'bafabbcbebfb', 'gaabgbbcccecfcgcce',6, 4, 19, '');
+"><div class="setViewButtons1">82</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1529" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'bafabbcbebfbccecdd', 'abgbbcdcfcgcbdcdedceee',6, 4, 19, '');
+"><div class="setViewButtons1">83</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1530" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'bafabbcbebfbccec', 'abgbbcfchcbdcdfdcedeee',7, 4, 19, '');
+"><div class="setViewButtons1">84</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1531" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'bbcbebfbdcfc', 'abgbibbcccgccdddfdgd',8, 3, 19, '');
+"><div class="setViewButtons1">85</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1532" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'fafbbcccfccddded', 'baabbbcbebdc',5, 3, 19, '');
+"><div class="setViewButtons1">86</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1533" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'badaeaabbbdbebcc', 'facbfbdcecfcbdcd',5, 3, 19, '');
+"><div class="setViewButtons1">87</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1534" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'fafbbcecfcbdcddd', 'baabbbdbebdc',5, 3, 19, '');
+"><div class="setViewButtons1">88</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1535" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'fagbibbcfcgcbdcdddedfd', 'eaabbbdbebfbccec',8, 3, 19, '');
+"><div class="setViewButtons1">89</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1536" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'fbbcdcecfcbdddce', 'eaabbbdbebcc',5, 4, 19, '');
+"><div class="setViewButtons1">90</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1537" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'bbdbebfbaccccd', 'gbibbcdcfcgcbdddbece',8, 4, 19, '');
+"><div class="setViewButtons1">91</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1538" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'hbbcdcfcgcicbdddbece', 'bbcbdbebfbgbcccd',8, 4, 19, '');
+"><div class="setViewButtons1">92</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1539" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'cacbacbc', 'baabdbdcadbdcd',3, 3, 19, '');
+"><div class="setViewButtons1">93</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13731" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'abbcdb', 'bbbdcdddebec',4, 3, 19, '');
+"><div class="setViewButtons1">94</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1541" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'daabdbbc', 'eaebecadbdcddd',4, 3, 19, '');
+"><div class="setViewButtons1">95</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1542" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'cbdbebgbdchcadedfdgdhdidjdaebecede', 'aafabbfbhbacbcccecfcgcicjckcbdcddd',10, 4, 19, '');
+"><div class="setViewButtons1">96</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13734" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'dabbfbgbccgccdgdcedeeefe', 'eacbebbcdcfcddedfd',6, 4, 19, '');
+"><div class="setViewButtons1">97</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1544" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'badbebfbecedaebecede', 'dacbbcdcadbdcddd',5, 4, 19, '');
+"><div class="setViewButtons1">98</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13736" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'daeabbgbccgccdfdgdcedeee', 'facbebfbdcfcdded',6, 4, 19, '');
+"><div class="setViewButtons1">99</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1546" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'bacacbfbfccdedbeceee', 'aabbacccdcbd',5, 4, 19, '');
+"><div class="setViewButtons1">100</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1547" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'cbdbebbccchccdddfdgdhddeeeffgfif', 'fagabbfbhbjbacdcecfcgcjcbdedbecejekfcgdgegjgfhhh',10, 7, 19, '');
+"><div class="setViewButtons1">101</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1548" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'badacbdbbccchccdddfdgdhddeeeffgfif', 'aaabbbebhbjbacdcecfcgcjcadbdedbecejekfcgdgegjgfhhh',10, 7, 19, '');
+"><div class="setViewButtons1">102</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1549" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'haabcbdbebfbhbfcgchc', 'cadafagabbgbibaccceciccdedidgecf',8, 5, 19, '');
+"><div class="setViewButtons1">103</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1550" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'eacbdbebccecbddded', 'cadafabbfbbcfccdfdceeefecf',5, 5, 19, '');
+"><div class="setViewButtons1">104</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1551" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'dacbbcccdcadcd', 'aafabbfbecfcbdddbecede',5, 4, 19, '');
+"><div class="setViewButtons1">105</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1552" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'daeafbccfcbdfdaebecedeeefe', 'bacbdbebbcecadcddded',5, 4, 19, '');
+"><div class="setViewButtons1">106</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1553" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'eacbebbcccdcadcd', 'faabbbfbecbdddfdbecedebf',5, 5, 19, '');
+"><div class="setViewButtons1">107</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1554" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'abbbebgbacechcddbfdf', 'baeafacbdbbcadbd',7, 5, 19, '');
+"><div class="setViewButtons1">108</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1555" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'bacadbhbibdcecbdcdfdgdhd', 'daeafagabbcbebgbbcfcgc',8, 3, 19, '');
+"><div class="setViewButtons1">109</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13738" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'daebccdceccdaebece', 'abcbdbbcadbd',4, 4, 19, '');
+"><div class="setViewButtons1">110</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13741" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'ebccdcecadbdce', 'bacbdbacbc',4, 4, 19, '');
+"><div class="setViewButtons1">111</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13744" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'cbcabcbbad', 'dcdbdacdbeaeab',3, 4, 19, '');
+"><div class="setViewButtons1">112</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1559" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'eadbebacbcdccd', 'bafafbccecbdddfdbede',5, 4, 19, '');
+"><div class="setViewButtons1">113</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13745" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'acbcbdcacbcddb', 'abadaebecedadddeeaebec',4, 4, 19, '');
+"><div class="setViewButtons1">114</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13747" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'eacbebacbccc', 'bafaabfbecfcadbdcddd',5, 3, 19, '');
+"><div class="setViewButtons1">115</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1562" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'bacbbc', 'dbccecbdcd',4, 3, 19, '');
+"><div class="setViewButtons1">116</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13749" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'baabcb', 'dbccecbdcd',4, 3, 19, '');
+"><div class="setViewButtons1">117</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1564" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'babccb', 'bdccdbec',4, 3, 19, '');
+"><div class="setViewButtons1">118</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13751" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'babbbdcccdddedfbfc', 'aaacbccacbdceaeb',5, 3, 19, '');
+"><div class="setViewButtons1">119</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13753" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'abdbebecadedbecedeee', 'aacacbacbcdccddd',4, 4, 19, '');
+"><div class="setViewButtons1">120</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1567" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'bafabbdbfbdcfcfd', 'dagaabgbbcgcbdcdddgdeefe',6, 4, 19, '');
+"><div class="setViewButtons1">121</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1568" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'bbcbdbfbdcfcfd', 'abgbibbcccgcddgdceeefe',8, 4, 19, '');
+"><div class="setViewButtons1">122</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1569" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'abbbcbebcceccddded', 'bacaeafbbcdcfcbdfdceeefebf',5, 5, 19, '');
+"><div class="setViewButtons1">123</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1570" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'badbacbcdcdd', 'eaabebecadbdedcede',4, 4, 19, '');
+"><div class="setViewButtons1">124</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13812" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'eaabbbebbcec', 'cafafbacfcbdddfdbede',5, 4, 19, '');
+"><div class="setViewButtons1">125</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1571" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'bbdbacbccd', 'eaabebecbdddbecede',4, 4, 19, '');
+"><div class="setViewButtons1">126</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1572" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'dadbacbcdcbddd', 'baeaebecadedaebecedeee',4, 4, 19, '');
+"><div class="setViewButtons1">127</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1573" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'eagbgcadbdcdfddeeege', 'cacbfbacbcccecfcdd',6, 4, 19, '');
+"><div class="setViewButtons1">128</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1574" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'fagadbgbgcadbdcdfddeeege', 'caeacbfbacbcccecfcdd',6, 4, 19, '');
+"><div class="setViewButtons1">129</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1575" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'fagbgcadbdcdfddeeege', 'cacbebfbacbcccfcdd',6, 4, 19, '');
+"><div class="setViewButtons1">130</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13755" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'dadbebecadedaebecedeee', 'cbacbcdcbdcddd',4, 4, 19, '');
+"><div class="setViewButtons1">131</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1577" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'dacbdbbcbd', 'eaebacccdcecaebece',4, 4, 19, '');
+"><div class="setViewButtons1">132</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1578" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'eacbebbcdcecbd', 'bbfbccfccdddedfdbece',5, 4, 19, '');
+"><div class="setViewButtons1">133</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13159" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'acbccbdbda', 'ceadbdccdcecebea',4, 4, 19, '');
+"><div class="setViewButtons1">134</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1580" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'ebccdceccdbece', 'bacbdbbcbd',4, 4, 19, '');
+"><div class="setViewButtons1">135</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1581" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'cbdbbcbd', 'ebccdcecbece',4, 4, 19, '');
+"><div class="setViewButtons1">136</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1582" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'fafbccdcecfccdceafbfcf', 'eacbdbebbcbdaebe',5, 5, 19, '');
+"><div class="setViewButtons1">137</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1583" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'cbdbebfbbcbd', 'bbgbccdcecfcgccdbece',6, 4, 19, '');
+"><div class="setViewButtons1">138</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1584" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'bafagabbgbccdcgccdedfdcede', 'cahaabcbfbhbbcfchcbdgdbegecfdfef',7, 5, 19, '');
+"><div class="setViewButtons1">139</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1585" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'baeacbebgbccfcfdbefebfcfdfefff', 'bbdbbcdcecbdcdedcedeee',6, 5, 19, '');
+"><div class="setViewButtons1">140</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1586" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'fbccecgcbdcdddedcebf', 'bacbdbebbcdc',6, 5, 19, '');
+"><div class="setViewButtons1">141</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1587" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'faabcbdbfbbcdcecfcbd', 'baeabbgbccgccdedfdgdaebece',6, 4, 19, '');
+"><div class="setViewButtons1">142</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13757" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'aaeaebacdcecadbdcd', 'daabbbdbbccc',4, 3, 19, '');
+"><div class="setViewButtons1">143</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13759" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'cbfbacdcecfcadbdcd', 'abbbdbebbccc',5, 3, 19, '');
+"><div class="setViewButtons1">144</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1590" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'dabbdbebfbbccc', 'bacbgbibdcecfcgcadbdcd',8, 3, 19, '');
+"><div class="setViewButtons1">145</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1591" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'ebgbdcecbdcd', 'caabdbbccc',6, 3, 19, '');
+"><div class="setViewButtons1">146</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1592" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'ebgbdcecbdcddd', 'caeaabdbbccc',6, 3, 19, '');
+"><div class="setViewButtons1">147</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13761" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'cadbbcccad', 'ebacdcfcbdcdddbf',5, 5, 19, '');
+"><div class="setViewButtons1">148</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1594" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'cadbbccc', 'bbdcecfcbdcdce',5, 4, 19, '');
+"><div class="setViewButtons1">149</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1595" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'eaabbbebdcfccdddaebe', 'badacbdbacccbdce',5, 4, 19, '');
+"><div class="setViewButtons1">150</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1596" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'cadbbccc', 'bbebdcecgccdcecg',6, 6, 19, '');
+"><div class="setViewButtons1">151</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13763" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'badadbbccc', 'caeaebacecadbdcddd',4, 3, 19, '');
+"><div class="setViewButtons1">152</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1598" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'badadbbccc', 'eabbebdcadbdcded',4, 3, 19, '');
+"><div class="setViewButtons1">153</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1599" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'dacbdbbccc', 'bbebfbdcbdcdddbf',5, 5, 19, '');
+"><div class="setViewButtons1">154</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1600" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'dacbbcccadbd', 'cabbdbfbdcddaebece',5, 4, 19, '');
+"><div class="setViewButtons1">155</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1601" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'badbebbccchc', 'abfbecfcadbdcddd',7, 3, 19, '');
+"><div class="setViewButtons1">156</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13765" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'bbbcccdbeaeb', 'abadbdcddcecfafbfc',5, 3, 19, '');
+"><div class="setViewButtons1">157</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13767" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'babcccdbeaeb', 'abadbdcddcecfafbfc',5, 3, 19, '');
+"><div class="setViewButtons1">158</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13770" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'babcccdbeaeb', 'acbdcddcecfafbfc',5, 3, 19, '');
+"><div class="setViewButtons1">159</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1605" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'abfbdcecfcbdcd', 'cadbebacbccc',5, 3, 19, '');
+"><div class="setViewButtons1">160</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1606" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'daabfbdcecfchcadbdcdde', 'bacadbebacbcccdd',7, 4, 19, '');
+"><div class="setViewButtons1">161</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1607" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'dbebacbccceccddded', 'daeafafbfcadbdfdbecedeee',5, 4, 19, '');
+"><div class="setViewButtons1">162</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13772" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'eadbacbccc', 'ebfbdcbdcddd',5, 3, 19, '');
+"><div class="setViewButtons1">163</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13774" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'dcecgcadbdcdfd', 'aadbacbccc',6, 3, 19, '');
+"><div class="setViewButtons1">164</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1610" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'dadbacbcccdceccdddedce', 'caeabbcbebfbgcbegecfdfff',6, 5, 19, '');
+"><div class="setViewButtons1">165</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1611" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'eadbbccceccddded', 'cacbebfbfcbdfdbecedeeefe',5, 4, 19, '');
+"><div class="setViewButtons1">166</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1612" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'dadbacbccc', 'eaebdcecadbdcd',4, 3, 19, '');
+"><div class="setViewButtons1">167</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1613" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'adbdcddcdeeaebec', 'acbcccdadb',4, 4, 19, '');
+"><div class="setViewButtons1">168</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1614" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'eaebdcbdcddd', 'dabbdbacbccc',4, 3, 19, '');
+"><div class="setViewButtons1">169</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1615" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'baebdcfcadbdcddd', 'dabbdbacbccc',5, 3, 19, '');
+"><div class="setViewButtons1">170</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13776" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'dacbdbbccc', 'bbebdcfcbdcddd',5, 3, 19, '');
+"><div class="setViewButtons1">171</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13778" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'caabdbebcc', 'fafbdcecfcbdcd',5, 3, 19, '');
+"><div class="setViewButtons1">172</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1618" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'aaeacbdbebbccc', 'cafafbfcadbdcded',5, 3, 19, '');
+"><div class="setViewButtons1">173</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1619" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'fbdcecfcadbdcd', 'dbebacbccc',5, 3, 19, '');
+"><div class="setViewButtons1">174</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1620" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'cadbebacbccc', 'eafafbdcecfcbdcd',5, 3, 19, '');
+"><div class="setViewButtons1">175</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13318" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'fabbfbdcecfcadbdcd', 'eacbdbebacbccc',5, 3, 19, '');
+"><div class="setViewButtons1">176</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13780" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'cafafbdcecfcadbdcd', 'aaeacbdbebacbccc',5, 3, 19, '');
+"><div class="setViewButtons1">177</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1623" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'faabbbfbecfcbdcdddbf', 'aaeadbebacbcccdc',5, 5, 19, '');
+"><div class="setViewButtons1">178</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1624" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'fadbebfbacbccc', 'badagagbdcecfcgcadbdcd',6, 3, 19, '');
+"><div class="setViewButtons1">179</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13782" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'facbdbebfbacbccc', 'bacadagagbdcecfcgcadbdcd',6, 3, 19, '');
+"><div class="setViewButtons1">180</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1626" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'hbdcecfcgchcbdcd', 'dbebfbgbbccc',7, 3, 19, '');
+"><div class="setViewButtons1">181</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1627" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'aacabbdbbcccbd', 'daeaabebdceccdbece',4, 4, 19, '');
+"><div class="setViewButtons1">182</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1628" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'cabcccadbd', 'daebdccdddaebe',4, 4, 19, '');
+"><div class="setViewButtons1">183</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13784" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'cadbbcccadbd', 'dafaebdceccdaebece',5, 4, 19, '');
+"><div class="setViewButtons1">184</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1630" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'cbdbccadbd', 'ebdcfccdddaebe',5, 4, 19, '');
+"><div class="setViewButtons1">185</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1631" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'bcbdcaccdb', 'aebecdcedceaebec',4, 4, 19, '');
+"><div class="setViewButtons1">186</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13786" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'bafbdcecgccdbece', 'abdbbcccadbd',6, 4, 19, '');
+"><div class="setViewButtons1">187</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13788" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'daeaebeccdedaebece', 'cadbbcccadbd',4, 4, 19, '');
+"><div class="setViewButtons1">188</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13790" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'abdbebbccc', 'fafbacdcfcadbdcddd',5, 3, 19, '');
+"><div class="setViewButtons1">189</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13792" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'cadbbcccad', 'aaeaebdceccdaebede',4, 4, 19, '');
+"><div class="setViewButtons1">190</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13794" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'cadbbcccad', 'bbebdcfccdddaebe',5, 4, 19, '');
+"><div class="setViewButtons1">191</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13796" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'dadbbcccadbd', 'bacafbdcecgccdaebece',6, 4, 19, '');
+"><div class="setViewButtons1">192</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13798" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'dadbbcccadbd', 'baeacbebeccdddaebeee',4, 4, 19, '');
+"><div class="setViewButtons1">193</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13800" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'eadbebacbccc', 'aafabbfbecfcadbdcddd',5, 3, 19, '');
+"><div class="setViewButtons1">194</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1640" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'eacbdbccadbd', 'daebgbdceccdaebece',6, 4, 19, '');
+"><div class="setViewButtons1">195</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1641" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'eaabcbdbccadbd', 'badaebgbdceccdaebede',6, 4, 19, '');
+"><div class="setViewButtons1">196</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1642" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'abcbdbccadbd', 'dabbebdcfccdddaebe',5, 4, 19, '');
+"><div class="setViewButtons1">197</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1643" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'dadbbcccadbd', 'abebdcfccdddbecf',5, 5, 19, '');
+"><div class="setViewButtons1">198</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/1644" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'dadbbcccadbd', 'eaabebacdccdedbece',4, 4, 19, '');
+"><div class="setViewButtons1">199</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li><li class="statusN"><a class="tooltip" href="/13802" onmouseover="if (this.querySelector('svg')) return;createPreviewBoard(this, 'cadaebfbdccdedaebece', 'baeadbbcccadbd',5, 4, 19, '');
+"><div class="setViewButtons1">200</div><div class="setViewButtons2">-</div><div class="setViewButtons3">-</div><span class="tooltip-box"></span></a></li>	</div>
+	</div>
+	<div class="homeLeft">
+		<p class="title4">Life & Death - Elementary #1</p>		<div class="new1">
+		<table border="0" width="100%">
+		<tr>
+			<td style="vertical-align:top;">
+				This is a collection of almost three thousand problems from Encyclopedia of Life and Death by Cho Chikun. <br><br>
+
+In this first part, you'll find about nine hundred problems for beginners. A dan player should find the solution in a few seconds and will need about an hour solve the whole book. I wish you enjoyment and improvement in the wonderful game of go, weiqi, baduk, or whatever you like to call it. 
+<br><br>
+The solutions that you find here were created by the Tsumego Hero community. 			</td>
+				<td width="195px" style="vertical-align:top;"><div align="center" class="set-image-zoom">
+								<a href="/1447">
+								<img height="252" width="182" style="border:1px solid black" src="/img/chochikun.png"
+								alt="Tsumego Collection: Life & Death - Elementary #1" title="Tsumego Collection: Life & Death - Elementary #1">
+								</a></div></td>		</tr>
+		<tr>
+			<td style="vertical-align:top;">
+				<table width="100%">
+					<tr>
+						<td style="vertical-align:top;" width="50%">
+						<div align="center">
+						<br>
+						<b>200 Problems<br>						</div>
+						</td>
+						<td style="vertical-align:bottom;" width="50%">
+						<div align="center">
+							<br>
+							Difficulty: <b>7k</b>						</div>
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td style="vertical-align:top;">
+				<div align="center">
+				<br><br>
+					<a class="new-button new-buttonx" style="top:-16px;position:relative;" href="/1447">Start</a>				</div>
+			</td>
+		</tr>
+		<tr>
+					<td>
+			<br>
+			<div align="center">
+							</div>
+
+			</td>
+
+			<td>
+						</td>
+			</tr>
+			<tr>
+			<td>
+						</td>
+			<td>
+						</td>
+			</tr>
+						</tr>
+		
+		</table>
+		</div>
+		<br><br><br><br><br>		<br><br>
+	</div>
+	<div style="clear:both;"></div>
+
+	<script>
+	var t1 = false;
+	var t2 = false;
+	var t7 = false;
+	var t3 = false;
+	var msg5selected = false;
+	var msg6selected = false;
+	$("#msg1").hide();
+	$("#msg2").hide();
+	$("#msg7").hide();
+	$("#msg3").hide();
+	$("#msg5").hide();
+	$("#msg6").hide();
+
+	$("#show").click(function(){
+		if(!t1){
+			$("#msg1").show();
+			document.getElementById("greyArrow2").src = "/img/greyArrow2.png";
+		}else{
+			$("#msg1").hide();
+			document.getElementById("greyArrow2").src = "/img/greyArrow1.png";
+		}
+		t1=!t1;
+	});
+	$("#show2").click(function(){
+		if(!t2){
+			$("#msg2").show();
+			document.getElementById("greyArrow3").src = "/img/greyArrow2.png";
+		}else{
+			$("#msg2").hide();
+			document.getElementById("greyArrow3").src = "/img/greyArrow1.png";
+		}
+		t2=!t2;
+	});
+	$("#show7").click(function(){
+		if(!t7){
+			$("#msg7").show();
+			document.getElementById("greyArrow7").src = "/img/greyArrow2.png";
+		}else{
+			$("#msg7").hide();
+			document.getElementById("greyArrow7").src = "/img/greyArrow1.png";
+		}
+		t7=!t7;
+	});
+	$("#show3").click(function(){
+		if(!t3){
+			$("#msg3").show();
+			document.getElementById("greyArrow4").src = "/img/greyArrow2.png";
+		}else{
+			$("#msg3").hide();
+			document.getElementById("greyArrow4").src = "/img/greyArrow1.png";
+		}
+		t3=!t3;
+	});
+	$("#show5").click(function(){
+		if(!msg5selected){
+			$("#msg5").fadeIn(250);
+			document.getElementById("greyArrow5").src = "/img/greyArrow2.png";
+		}else{
+			$("#msg5").fadeOut(250);
+			document.getElementById("greyArrow5").src = "/img/greyArrow1.png";
+		}
+		msg5selected = !msg5selected;
+	});
+	$("#show6").click(function(){
+		if(!msg6selected){
+			$("#msg6").fadeIn(250);
+			document.getElementById("greyArrow6").src = "/img/greyArrow2.png";
+		}else{
+			$("#msg6").fadeOut(250);
+			document.getElementById("greyArrow6").src = "/img/greyArrow1.png";
+		}
+		msg6selected = !msg6selected;
+	});
+			function restore(){
+			var confirmed = confirm("Are you sure?");
+			if(confirmed) window.location.href = "/sets/beta?restore="+50;
+		}
+		function remove(){
+			var confirmed = confirm("Are you sure?");
+			if(confirmed) window.location.href = "/sets/beta2?remove="+50;
+		}
+		const activeTopicTiles = [];
+	const activeDifficultyTiles = [];
+	const activeTagTiles = [];
+
+	
+	drawActiveTiles();
+
+	function drawActiveTiles(){
+		$(".active-tiles-container").html("");
+		for(let i=0;i<activeTopicTiles.length;i++)
+			$(".active-tiles-container").append('<div class="dropdown-tile tile-color1" id="active-tiles-element'+i+'" onclick="removeActiveTopic('+i+')" style="cursor:context-menu">'+activeTopicTiles[i]+'</div>');
+		for(let i=0;i<activeDifficultyTiles.length;i++)
+			$(".active-tiles-container").append('<div class="dropdown-tile tile-color2" id="active-tiles-element'+i+'" onclick="removeActiveDifficulty('+i+')" style="cursor:context-menu">'+activeDifficultyTiles[i]+'</div>');
+		for(let i=0;i<activeTagTiles.length;i++)
+			$(".active-tiles-container").append('<div class="dropdown-tile tile-color3" id="active-tiles-element'+i+'" onclick="removeActiveTag('+i+')" style="cursor:context-menu">'+activeTagTiles[i]+'</div>');
+		if(activeTopicTiles.length>0 || activeDifficultyTiles.length>0 || activeTagTiles.length>0)
+			$(".active-tiles-container").append('<a class="dropdown-tile tile-color4" id="unselect-active-tiles" href="">clear</a><div style="clear:both;"</div>');
+	}
+
+	$(".active-tiles-container").on("click", "#unselect-active-tiles", function(e){
+		e.preventDefault();
+		$(".active-tiles-container").html("");
+		setCookie("filteredSets", "");
+		setCookie("filteredRanks", "");
+		setCookie("filteredTags", "");
+		window.location.href = "/sets/view/50";
+	});
+
+		var msg2selected = false;
+		var msg3selected = false;
+		var msg4selected = false;
+		var msg5selected = false;
+		var msgFilterSelected = false;
+
+		$("#msg2x").hide();
+		$("#ratioInfo").hide();
+		$("#timeInfo").hide();
+		$("#numbersButton").addClass("new-button-time-inactive");
+		$("#numbersButton").removeClass("new-button-time");
+		$("#ratioButton").addClass("new-button-time");
+		$("#ratioButton").removeClass("new-button-time-inactive");
+		$("#timeButton").addClass("new-button-time");
+		$("#timeButton").removeClass("new-button-time-inactive");
+
+		$("#showx").click(function(){
+			if(!msg2selected){
+				$("#msg2x").fadeIn(250);
+				document.getElementById("greyArrow1").src = "/img/greyArrow2.png";
+			}else{
+				$("#msg2x").fadeOut(250);
+				document.getElementById("greyArrow1").src = "/img/greyArrow1.png";
+			}
+			msg2selected = !msg2selected;
+		});
+
+		$("#showFilters").click(function(){
+			if(!msgFilterSelected){
+				$("#msgFilters").fadeIn(250);
+				document.getElementById("greyArrowFilter").src = "/img/greyArrow2.png";
+			}else{
+				$("#msgFilters").fadeOut(250);
+				document.getElementById("greyArrowFilter").src = "/img/greyArrow1.png";
+			}
+			msgFilterSelected = !msgFilterSelected;
+		});
+
+		function d1(){
+			$("#numbersButton").addClass("new-button-time-inactive");
+			$("#numbersButton").removeClass("new-button-time");
+			$("#ratioButton").addClass("new-button-time");
+			$("#ratioButton").removeClass("new-button-time-inactive");
+			$("#timeButton").addClass("new-button-time");
+			$("#timeButton").removeClass("new-button-time-inactive");
+			$("#numbersInfo").fadeIn(250);
+			$("#ratioInfo").hide();
+			$("#timeInfo").hide();
+			$(".setViewButtons1").fadeIn(200);
+			$(".setViewButtons2").hide();
+			$(".setViewButtons3").hide();
+			$(".setViewCompleted").css("border", "1px solid #45ac6e");
+			$(".setViewAccuracy").css("border", "none");
+			$(".setViewTime").css("border", "none");
+		}
+		function d2(){
+			$("#numbersButton").addClass("new-button-time");
+			$("#numbersButton").removeClass("new-button-time-inactive");
+			$("#ratioButton").addClass("new-button-time-inactive");
+			$("#ratioButton").removeClass("new-button-time");
+			$("#timeButton").addClass("new-button-time");
+			$("#timeButton").removeClass("new-button-time-inactive");
+			$("#numbersInfo").hide();
+			$("#ratioInfo").fadeIn(250);
+			$("#timeInfo").hide();
+			$(".setViewButtons1").hide();
+			$(".setViewButtons2").fadeIn(200);
+			$(".setViewButtons3").hide();
+			$(".setViewCompleted").css("border", "none");
+			$(".setViewAccuracy").css("border", "1px solid #722394");
+			$(".setViewTime").css("border", "none");
+		}
+		function d3(){
+			$("#numbersButton").addClass("new-button-time");
+			$("#numbersButton").removeClass("new-button-time-inactive");
+			$("#ratioButton").addClass("new-button-time");
+			$("#ratioButton").removeClass("new-button-time-inactive");
+			$("#timeButton").addClass("new-button-time-inactive");
+			$("#timeButton").removeClass("new-button-time");
+			$("#numbersInfo").hide();
+			$("#ratioInfo").hide();
+			$("#timeInfo").fadeIn(250);
+			$(".setViewButtons1").hide();
+			$(".setViewButtons2").hide();
+			$(".setViewButtons3").fadeIn(200);
+			$(".setViewCompleted").css("border", "none");
+			$(".setViewAccuracy").css("border", "none");
+			$(".setViewTime").css("border", "1px solid #b34717");
+		}
+
+	let tags = [];
+	let unapprovedTags = [];
+	let idTags = [];
+	let allTags = [];
+	let newTag = null;
+	allTags.push("1-1 point");allTags.push("2-1 point");allTags.push("Attack");allTags.push("Bamboo Joint");allTags.push("Belly Attachment Tesuji");allTags.push("Bent Four in the Corner");allTags.push("Breaking Bamboo Clamp");allTags.push("Bulky Five");allTags.push("Carpenter's Square");allTags.push("Chuban");allTags.push("Clamp");allTags.push("Comb-Formation");allTags.push("Connect");allTags.push("Crane's Nest");allTags.push("Crosscut Tesuji");allTags.push("Damezumari");allTags.push("Descent");allTags.push("Door Group");allTags.push("Double Atari");allTags.push("Double Ko");allTags.push("Driving Tesuji");allTags.push("Enclosure");allTags.push("False Eye");allTags.push("Fuseki");allTags.push("Geta");allTags.push("Golden Chicken Standing on One Leg");allTags.push("Haengma");allTags.push("Hane");allTags.push("Hekomi");allTags.push("J+1 Group");allTags.push("J-Group");allTags.push("Joseki");allTags.push("Ko");allTags.push("L+1 Group");allTags.push("L+2 Group");allTags.push("L-Group");allTags.push("Ladder");allTags.push("Long L Group");allTags.push("Loose ladder");allTags.push("Miai");allTags.push("Monkey Jump");allTags.push("Moyo");allTags.push("Nakade");allTags.push("Nose Tesuji");allTags.push("Oiotoshi");allTags.push("Oshi-tsubushi");allTags.push("Patting the Raccoon's Belly");allTags.push("Placement");allTags.push("Probe");allTags.push("Rabbitty Six");allTags.push("Sabaki");allTags.push("Sacrifice");allTags.push("Seki");allTags.push("Semeai");allTags.push("Semeai Type 1");allTags.push("Semeai Type 2");allTags.push("Semeai Type 3");allTags.push("Semeai Type 4");allTags.push("Semeai Type 5");allTags.push("Semeai Type 6");allTags.push("SendingTwoReturningOne");allTags.push("Sente");allTags.push("Separate");allTags.push("Snapback");allTags.push("Spiral Ladder");allTags.push("Squeeze ");allTags.push("Superko");allTags.push("Symmetry");allTags.push("Ten Thousand Year Ko");allTags.push("Throw-in");allTags.push("Tombstone");allTags.push("Tripod Group");allTags.push("Tsumego");allTags.push("Two-Headed Dragon");allTags.push("Under the Stones");allTags.push("Weak Carpenter's Square");allTags.push("Yose");allTags.push("tsuke");	drawTags();
+
+	function drawTags(){
+		if(tags.length>0) $(".tag-list").append("Tags: ");
+		let foundNewTag = false;
+		for(let i=0;i<tags.length;i++){
+			let isNewTag = '';
+			if(tags[i]===newTag){
+				isNewTag = 'class="is-new-tag"';
+				foundNewTag = true;
+			}
+			if(unapprovedTags[i]==0){
+				isNewTag = 'class="is-new-tag"';
+			}
+			let tagLink = 'href="/tags/view/'+idTags[i]+'"';
+			let tagLinkId = 'id="'+makeIdValidName(tags[i])+'"';
+			if(typeof idTags[i] === "undefined"){
+				tagLink = '';
+				tagLinkId = '';
+			}
+			$(".tag-list").append('<a '+tagLink+' '+isNewTag+' '+tagLinkId+'>'+tags[i]+'</a>');
+			if(i<tags.length-1)
+				$(".tag-list").append(', ');
+		}
+		if(foundNewTag){
+			$(".tag-list").append(" ");
+			$(".tag-list").append('<button id="undo-tags-button">Undo</button>');
+			$(".tag-list").append(' <a class="new-button-default" href="/sets/view/50?hash=32bb90e8976aab5298d5da10fe66f21d">Submit</a>');
+			$("#undo-tags-button").show();
+		}
+
+		$(".add-tag-list").append("Add tag to ALL problems in this collection: ");
+		for(let i=0;i<allTags.length;i++){
+			$(".add-tag-list").append('<a class="add-tag-list-anchor" id="'+makeIdValidName(allTags[i])+'">'
+			+allTags[i]+'</a>');
+			if(i<allTags.length-1)
+				$(".add-tag-list").append(', ');
+		}
+		$(".add-tag-list").append(' <a class="add-tag-list-anchor" href="/tags/add">[Create new tag]</a>');
+	}
+
+	for(let i=0;i<allTags.length;i++){
+		let currentIdValue = "#" + makeIdValidName(allTags[i]);
+		$('.tag-container').on('click', currentIdValue, function(e) {
+			e.preventDefault();
+			setCookie("addTag", "50-"+allTags[i]);
+			newTag = $(currentIdValue).text();
+			let newAllTags = [];
+			for(let i=0;i<allTags.length;i++){
+				if(allTags[i] !== $(currentIdValue).text())
+					newAllTags.push(allTags[i]);
+			}
+			allTags = newAllTags;
+			tags.push($(currentIdValue).text());
+			$(".tag-list").html("");
+			$(".add-tag-list").html("");
+			drawTags();
+			$(".add-tag-list").hide();
+		});
+	}
+
+	$('.tag-container').on('click', '#undo-tags-button', function(){
+		setCookie("addTag", 0);
+		$(".tag-list").html("");
+		$(".add-tag-list").html("");
+		$(".add-tag-list").show();
+		tags = [];
+		allTags = [];
+		newTag = null;
+		allTags.push("1-1 point");allTags.push("2-1 point");allTags.push("Attack");allTags.push("Bamboo Joint");allTags.push("Belly Attachment Tesuji");allTags.push("Bent Four in the Corner");allTags.push("Breaking Bamboo Clamp");allTags.push("Bulky Five");allTags.push("Carpenter's Square");allTags.push("Chuban");allTags.push("Clamp");allTags.push("Comb-Formation");allTags.push("Connect");allTags.push("Crane's Nest");allTags.push("Crosscut Tesuji");allTags.push("Damezumari");allTags.push("Descent");allTags.push("Door Group");allTags.push("Double Atari");allTags.push("Double Ko");allTags.push("Driving Tesuji");allTags.push("Enclosure");allTags.push("False Eye");allTags.push("Fuseki");allTags.push("Geta");allTags.push("Golden Chicken Standing on One Leg");allTags.push("Haengma");allTags.push("Hane");allTags.push("Hekomi");allTags.push("J+1 Group");allTags.push("J-Group");allTags.push("Joseki");allTags.push("Ko");allTags.push("L+1 Group");allTags.push("L+2 Group");allTags.push("L-Group");allTags.push("Ladder");allTags.push("Long L Group");allTags.push("Loose ladder");allTags.push("Miai");allTags.push("Monkey Jump");allTags.push("Moyo");allTags.push("Nakade");allTags.push("Nose Tesuji");allTags.push("Oiotoshi");allTags.push("Oshi-tsubushi");allTags.push("Patting the Raccoon's Belly");allTags.push("Placement");allTags.push("Probe");allTags.push("Rabbitty Six");allTags.push("Sabaki");allTags.push("Sacrifice");allTags.push("Seki");allTags.push("Semeai");allTags.push("Semeai Type 1");allTags.push("Semeai Type 2");allTags.push("Semeai Type 3");allTags.push("Semeai Type 4");allTags.push("Semeai Type 5");allTags.push("Semeai Type 6");allTags.push("SendingTwoReturningOne");allTags.push("Sente");allTags.push("Separate");allTags.push("Snapback");allTags.push("Spiral Ladder");allTags.push("Squeeze ");allTags.push("Superko");allTags.push("Symmetry");allTags.push("Ten Thousand Year Ko");allTags.push("Throw-in");allTags.push("Tombstone");allTags.push("Tripod Group");allTags.push("Tsumego");allTags.push("Two-Headed Dragon");allTags.push("Under the Stones");allTags.push("Weak Carpenter's Square");allTags.push("Yose");allTags.push("tsuke");		drawTags();
+	});
+
+	$('.tag-container').on('click', "#open-add-tag-menu", function(e){
+		$("#open-add-tag-menu").hide();
+		$(".add-tag-list").show();
+	});
+
+			</script>
+	<style>
+	#show5{display:block;}
+	#show6{text-decoration:underline;cursor:pointer;}
+	#msgFilters{
+		display:none;
+		margin:0 4px 8px
+	}
+	#showFilters, .showFilters{
+		display:none;		margin:8px 4px;
+	}
+
+	</style>
+	</div>
+	</div>
+	</div>
+<div id="footer" class="footerLinks">
+	<div class="footer-space"></div>
+
+	<div class="footer-space"></div>
+		<div class="footer-element">
+		Supported by Wube Software
+		</div>
+		<div class="footer-element">
+		<a href="https://www.factorio.com">
+			<img src="/img/wube-software-logo.png" title="Wube Software" alt="Wube Software">
+			</a>
+		</div>
+	<div class="footer-space"></div>
+		<div class="footer-element">
+			Tsumego Hero ┬⌐ 2026	</div>
+		<div class="footer-element">
+		<a href="mailto:joschka.zimdars@googlemail.com">joschka.zimdars@googlemail.com</a>
+	</div>
+		<div class="footer-element">
+		<a href="/sites/impressum">Legal notice</a>
+	</div>
+		<div class="footer-element">
+		<a href="/users/authors">About</a>
+	</div>
+	<br><br><br>
+	</div>
+<script type="text/javascript">
+	var accountWidget =null;	var lifetime = new Date();
+
+	lifetime.setTime(lifetime.getTime()+8*24*60*60*1000);
+	lifetime = lifetime.toUTCString()+"";
+	setCookie("mode", 1);	let light = true;
+	function updateSoundValue(value)
+	{
+		if (typeof besogo !== 'undefined')
+		{
+			if(typeof value === 'undefined' || value === null)
+				value = false;
+			besogo.editor.setSoundEnabled(value);
+		}
+		soundsEnabled = value;
+	}
+
+	setCookie("lightDark", "light");
+	setCookie("lastProfileLeft", "1");
+	setCookie("lastProfileRight", "2");
+	setCookie("type", "0");
+	setCookie("texture", "0");
+			var soundsEnabled = true;
+	var notMode3 = true;
+
+		soundValue = getCookie("sound");
+		updateSoundValue(soundValue == 'on');
+
+	$(document).ready(function(){
+		if(soundValue=="off")
+		{
+			document.getElementById("soundButtonImage").src="/img/sound-icon2.png";
+			setCookie("sound", "off");
+			updateSoundValue(false);
+		}
+		if(soundValue=="on")
+		{
+			document.getElementById("soundButtonImage").src="/img/sound-icon1.png";
+			setCookie("sound", "on");
+			updateSoundValue(true);
+		}
+
+		$("#adminLink-more").click(function(){
+			$(".additional-adminLink").show();
+			$(".additional-adminLink2").hide();
+		});
+
+					});
+
+	function updateCookie(c1,c2)
+	{
+		document.cookie = c1+c2;
+	}
+
+	function logoHover(img)
+	{
+		img.src = '/img/tsumegoHero2.png';
+	}
+
+	function logoNoHover(img)
+	{
+		img.src = "/img/tsumegoHero1.png";
+	}
+
+	function boardsHover(){
+		document.getElementById("boardsInMenu").style.color = "#74D14C";
+		document.getElementById("boardsInMenu").style.backgroundColor = "grey";
+	}
+
+	function boardsNoHover(){
+		document.getElementById("boardsInMenu").style.color = "#d19fe4";
+		document.getElementById("boardsInMenu").style.backgroundColor = "transparent";
+	}
+
+	function check1(){
+		if(document.getElementById("dropdown-1").checked == true){
+			document.getElementById("dropdowntable").style.display = "inline-block";
+			document.getElementById("dropdowntable2").style.display = "inline-block";
+			$(".dropdown-inner").css("opacity", "1");
+			$(".dropdown-inner").css("display", "inline-block");
+	}
+		if(document.getElementById("dropdown-1").checked == false){
+			document.getElementById("dropdowntable").style.display = "none";
+			document.getElementById("dropdowntable2").style.display = "none";
+			$(".dropdown-inner").css("opacity", "0");
+			$(".dropdown-inner").css("display", "none");
+	}
+	}
+	$("#check3").click(function(e){
+		if(document.getElementById("dropdown-1").checked == true){
+			document.getElementById("dropdown-1").checked = false;
+		}else{
+			document.getElementById("dropdown-1").checked = true;
+	}
+		check1();
+		e.stopPropagation();
+	});
+
+	$("#dropdown-inner-propagation").click(function(e){
+		e.stopPropagation();
+	});
+
+	function changeSound()
+	{
+		if(getCookie("sound")=="off")
+		{
+			document.getElementById("soundButtonImage").src="/img/sound-icon1.png";
+			document.cookie = "sound=on;path=/";
+			document.cookie = "sound=on;path=/sets/view";
+			document.cookie = "sound=on;path=/tsumegos/play";
+			document.cookie = "sound=on;path=/users";
+			document.cookie = "sound=on;path=/users/view";
+			updateSoundValue(true);
+		}
+		else if(getCookie("sound")=="on")
+		{
+			document.getElementById("soundButtonImage").src="/img/sound-icon2.png";
+			document.cookie = "sound=off;path=/";
+			document.cookie = "sound=off;path=/sets/view";
+			document.cookie = "sound=off;path=/tsumegos/play";
+			document.cookie = "sound=off;path=/users";
+			document.cookie = "sound=off;path=/users/view";
+			updateSoundValue(false);
+		}
+		else
+		{
+			document.getElementById("soundButtonImage").src="/img/sound-icon2.png";
+			document.cookie = "sound=off;path=/";
+			document.cookie = "sound=off;path=/sets/view";
+			document.cookie = "sound=off;path=/tsumegos/play";
+			document.cookie = "sound=off;path=/users";
+			document.cookie = "sound=off;path=/users/view";
+			updateSoundValue(false);
+		}
+	}
+
+	function getCookie(cname){
+		var name = cname + "=";
+		var decodedCookie = decodeURIComponent(document.cookie);
+		var ca = decodedCookie.split(';');
+		for(var i = 0; i<ca.length; i++){
+			var c = ca[i];
+			while (c.charAt(0) == ' '){
+				c = c.substring(1);
+	}
+			if (c.indexOf(name) == 0){
+				return c.substring(name.length, c.length);
+	}
+	}
+		return "";
+	}
+
+	function sandboxHover(){
+		if(document.getElementById("sandboxLink")) document.getElementById("sandboxLink").style.display = "inline-block";
+		if(document.getElementById("collectionsInMenu")) document.getElementById("collectionsInMenu").style.color = "#74d14c";
+		if(document.getElementById("collectionsInMenu")) document.getElementById("collectionsInMenu").style.backgroundColor = "grey";
+	}
+
+	function sandboxNoHover(){
+		if(document.getElementById("sandboxLink")) document.getElementById("sandboxLink").style.display = "none";
+		if(document.getElementById("collectionsInMenu")) document.getElementById("collectionsInMenu").style.backgroundColor = "rgba(0,0,0,0)";
+		if(document.getElementById("collectionsInMenu")) document.getElementById("collectionsInMenu").style.color = "#d19fe4";
+	}
+
+	function leaderboardHover(){
+		if(document.getElementById("leaderboardLink")) document.getElementById("leaderboardLink").style.display = "inline-block";
+		if(document.getElementById("highscoreInMenu")) document.getElementById("highscoreInMenu").style.color = "#74d14c";
+		if(document.getElementById("highscoreInMenu")) document.getElementById("highscoreInMenu").style.backgroundColor = "grey";
+	}
+
+	function leaderboardNoHover(){
+		if(document.getElementById("leaderboardLink")) document.getElementById("leaderboardLink").style.display = "none";
+		if(document.getElementById("highscoreInMenu")) document.getElementById("highscoreInMenu").style.backgroundColor = "rgba(0,0,0,0)";
+		if(document.getElementById("highscoreInMenu")) document.getElementById("highscoreInMenu").style.color = "#d19fe4";
+	}
+
+	function upgradeHover2(){
+		document.getElementById("donateH2").src = '/img/upgradeButton1h.png';
+	}
+
+	function upgradeNoHover2(){
+		document.getElementById("donateH2").src = "/img/upgradeButton1.png";
+	}
+
+	function donateHover2(){
+		document.getElementById("donateH2").src = '/img/donateButton1h.png';
+	}
+
+	function donateNoHover2(){
+		document.getElementById("donateH2").src = "/img/donateButton1.png";
+	}
+
+	function deleteAllCookies()
+	{
+		const cookies = document.cookie.split(";");
+
+		for (let i = 0; i < cookies.length; i++)
+		{
+			const cookie = cookies[i];
+			const eqPos = cookie.indexOf("=");
+			const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+			document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+		}
+	}
+
+	boardSelector = new BoardSelector(255n);
+</script>
+		<style>.outerMenu1{left: 224px;}</style></body>
+
+</html>
+
+<head>
