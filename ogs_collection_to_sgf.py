@@ -2,16 +2,8 @@
 import requests
 import os
 import time
+import argparse
 
-downloadWholeCollection =  False
-# if False, only the specified puzzle is downloaded
-# if True, all problems of the specified puzzle's collection are downloaded
-
-puzzleNumber = 6544
-# the puzzle id taken from the puzzle URL
-
-skipAuthentication = True
-# authentication is required for private problems
 
 def escape(text):
     return text.replace('\\', '\\\\').replace(']', '\\]')
@@ -111,7 +103,7 @@ def writePuzzle(file, puzzle):
     file.write(']')
     writeNode(file, puzzle['move_tree'], player)
     file.write(')')
-    
+
 def authenticate():
     url = 'https://online-go.com/api/v0/login'
     username =  input('Username: ')
@@ -119,25 +111,48 @@ def authenticate():
     response = requests.post(url, data={'username' : username, 'password' : password})
     return response.cookies
 
-cookies = [] if skipAuthentication else authenticate()
-if downloadWholeCollection:
-    collectionUrl = 'https://online-go.com/api/v1/puzzles/'  + str(puzzleNumber) + '/collection_summary'
-    collection = requests.get(collectionUrl, cookies=cookies).json()
-    time.sleep(5.0)
-puzzleUrl = 'https://online-go.com/api/v1/puzzles/' + str(puzzleNumber)
-responseJSON = requests.get(puzzleUrl, cookies=cookies).json()
-if downloadWholeCollection:
-    collectionName = responseJSON['collection']['name']
-    collectionFolder = os.getcwd() + '/' + collectionName
-    os.mkdir(collectionFolder)
-    os.chdir(collectionFolder)
-with open(responseJSON['name'] + '.sgf', 'w', encoding="utf-8") as file:
-    writePuzzle(file, responseJSON['puzzle'])
-if downloadWholeCollection:
-    for puzzle in collection:
-        if puzzle['id'] != puzzleNumber:
-            time.sleep(5.0)
-            puzzleUrl = 'https://online-go.com/api/v1/puzzles/' + str(puzzle['id'])
-            puzzleJSON = requests.get(puzzleUrl, cookies=cookies).json()['puzzle']
-            with open(puzzle['name'] + '.sgf', 'w', encoding="utf-8") as file:
-                writePuzzle(file, puzzleJSON)
+def create_sgf_file(puzzle):
+    with open(puzzle['name'] + '.sgf', 'w', encoding="utf-8") as file:
+        writePuzzle(file, puzzle)
+
+def download_puzzle(puzzle_id, cookies):
+    puzzleUrl = f'https://online-go.com/api/v1/puzzles/{puzzle_id}'
+    response = requests.get(puzzleUrl, cookies=cookies)
+    response.raise_for_status()
+    return response.json()
+
+def download_collection(puzzle_id, cookies):
+    collectionUrl = f'https://online-go.com/api/v1/puzzles/{puzzle_id}/collection_summary'
+    response = requests.get(collectionUrl, cookies=cookies)
+    response.raise_for_status()
+    return response.json()
+
+def main():
+    parser = argparse.ArgumentParser(description='Download OGS puzzles and convert them to SGF files.')
+    parser.add_argument('puzzle_id', type=int, help='The ID of the puzzle to download.')
+    parser.add_argument('--collection', action='store_true', help='Download the whole collection.')
+    parser.add_argument('--no-auth', action='store_true', help='Skip authentication.')
+    args = parser.parse_args()
+
+    cookies = [] if args.no_auth else authenticate()
+
+    if args.collection:
+        responseJSON = download_puzzle(args.puzzle_id, cookies)
+        collectionName = responseJSON['collection']['name']
+        collectionFolder = os.path.join(os.getcwd(), collectionName)
+        os.makedirs(collectionFolder, exist_ok=True)
+        os.chdir(collectionFolder)
+        create_sgf_file(responseJSON['puzzle'])
+
+        collection = download_collection(args.puzzle_id, cookies)
+        for puzzle in collection:
+            if puzzle['id'] != args.puzzle_id:
+                time.sleep(5.0)
+                puzzleJSON = download_puzzle(puzzle['id'], cookies)['puzzle']
+                create_sgf_file(puzzleJSON)
+    else:
+        responseJSON = download_puzzle(args.puzzle_id, cookies)
+        create_sgf_file(responseJSON['puzzle'])
+
+if __name__ == '__main__':
+    main()
