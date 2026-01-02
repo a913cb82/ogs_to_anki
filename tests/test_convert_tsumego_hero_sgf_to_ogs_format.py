@@ -1,6 +1,6 @@
 import unittest
 import os
-from convert_tsumego_hero_sgf_to_ogs_format import parse_sgf_to_tree, serialize_tree_to_sgf, process_node
+from src.convert_tsumego_hero_sgf_to_ogs_format import parse_sgf_to_tree, serialize_tree_to_sgf, process_node
 
 class TestConvertSGF(unittest.TestCase):
     def test_basic_conversion(self):

@@ -2,18 +2,20 @@ import unittest
 from unittest.mock import patch, MagicMock
 import os
 import re
-from tsumego_hero_collection_to_sgf import get_problem_details, clean_sgf_js, main
 from bs4 import BeautifulSoup
+
+# Use standard imports assuming tests are run from the project root
+from src.tsumego_hero_collection_to_sgf import get_problem_details, clean_sgf_js, main
 
 class TestTsumegoHeroCollectionToSgf(unittest.TestCase):
     def setUp(self):
-        self.test_data_dir = 'test_data'
+        self.test_data_dir = os.path.join(os.path.dirname(__file__), 'test_data')
 
     def read_test_file(self, filename):
         with open(os.path.join(self.test_data_dir, filename), 'r', encoding='utf-8') as f:
             return f.read()
 
-    @patch('tsumego_hero_collection_to_sgf.requests.get')
+    @patch('src.tsumego_hero_collection_to_sgf.requests.get')
     def test_get_problem_details_1447(self, mock_get):
         # Setup mock for 1447
         html_content = self.read_test_file('1447')
@@ -33,7 +35,7 @@ class TestTsumegoHeroCollectionToSgf(unittest.TestCase):
         self.assertTrue(sgf_content.strip().startswith(expected_sgf_start))
         self.assertIn("PW[white]PB[black]", sgf_content)
 
-    @patch('tsumego_hero_collection_to_sgf.requests.get')
+    @patch('src.tsumego_hero_collection_to_sgf.requests.get')
     def test_get_problem_details_13780(self, mock_get):
         # Setup mock for 13780
         html_content = self.read_test_file('13780')

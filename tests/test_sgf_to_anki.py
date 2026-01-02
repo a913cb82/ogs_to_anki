@@ -3,11 +3,8 @@ import os
 import sys
 import re
 
-# Add the parent directory to the path to allow importing sgf_to_anki
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '.')))
-
-# Import both functions
-from sgf_to_anki import clean_sgf_comment, process_sgf_content
+# Use standard imports assuming tests are run from the project root
+from src.sgf_to_anki import clean_sgf_comment, process_sgf_content
 
 
 class TestSgfToAnki(unittest.TestCase):
