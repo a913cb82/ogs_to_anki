@@ -111,8 +111,13 @@ def authenticate():
     response = requests.post(url, data={'username' : username, 'password' : password})
     return response.cookies
 
-def create_sgf_file(puzzle):
-    with open(puzzle['name'] + '.sgf', 'w', encoding="utf-8") as file:
+def sanitize_filename(name):
+    return name.replace('/', ' - ')
+
+def create_sgf_file(puzzle, output_dir):
+    filename = sanitize_filename(puzzle['name']) + '.sgf'
+    filepath = os.path.join(output_dir, filename)
+    with open(filepath, 'w', encoding="utf-8") as file:
         writePuzzle(file, puzzle)
 
 def download_puzzle(puzzle_id, cookies):
@@ -132,27 +137,29 @@ def main():
     parser.add_argument('puzzle_id', type=int, help='The ID of the puzzle to download.')
     parser.add_argument('--collection', action='store_true', help='Download the whole collection.')
     parser.add_argument('--no-auth', action='store_true', help='Skip authentication.')
+    parser.add_argument('--output', default='.', help='The output directory.')
     args = parser.parse_args()
 
     cookies = [] if args.no_auth else authenticate()
+    
+    os.makedirs(args.output, exist_ok=True)
 
     if args.collection:
         responseJSON = download_puzzle(args.puzzle_id, cookies)
         collectionName = responseJSON['collection']['name']
-        collectionFolder = os.path.join(os.getcwd(), collectionName)
+        collectionFolder = os.path.join(args.output, collectionName)
         os.makedirs(collectionFolder, exist_ok=True)
-        os.chdir(collectionFolder)
-        create_sgf_file(responseJSON['puzzle'])
+        create_sgf_file(responseJSON['puzzle'], collectionFolder)
 
         collection = download_collection(args.puzzle_id, cookies)
         for puzzle in collection:
             if puzzle['id'] != args.puzzle_id:
                 time.sleep(5.0)
                 puzzleJSON = download_puzzle(puzzle['id'], cookies)['puzzle']
-                create_sgf_file(puzzleJSON)
+                create_sgf_file(puzzleJSON, collectionFolder)
     else:
         responseJSON = download_puzzle(args.puzzle_id, cookies)
-        create_sgf_file(responseJSON['puzzle'])
+        create_sgf_file(responseJSON['puzzle'], args.output)
 
 if __name__ == '__main__':
     main()
