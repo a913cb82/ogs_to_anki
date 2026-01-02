@@ -135,7 +135,7 @@ def download_collection(puzzle_id, cookies):
 def main():
     parser = argparse.ArgumentParser(description='Download OGS puzzles and convert them to SGF files.')
     parser.add_argument('puzzle_id', type=int, help='The ID of the puzzle to download.')
-    parser.add_argument('--collection', action='store_true', help='Download the whole collection.')
+    parser.add_argument('--collection', action='store_true', help='Download the whole collection. A subdirectory named after the collection will be created inside the output directory.')
     parser.add_argument('--no-auth', action='store_true', help='Skip authentication.')
     parser.add_argument('--output', default='.', help='The output directory.')
     args = parser.parse_args()
