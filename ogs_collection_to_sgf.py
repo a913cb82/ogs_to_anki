@@ -1,8 +1,8 @@
-#!/usr/bin/python
 import requests
 import os
 import time
 import argparse
+from tqdm import tqdm
 
 
 def escape(text):
@@ -152,7 +152,7 @@ def main():
         create_sgf_file(responseJSON['puzzle'], collectionFolder)
 
         collection = download_collection(args.puzzle_id, cookies)
-        for puzzle in collection:
+        for puzzle in tqdm(collection, desc="Downloading puzzles"):
             if puzzle['id'] != args.puzzle_id:
                 time.sleep(5.0)
                 puzzleJSON = download_puzzle(puzzle['id'], cookies)['puzzle']
