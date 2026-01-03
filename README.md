@@ -2,7 +2,7 @@
 
 This project provides a set of tools to download Go problems (Tsumego) from OGS (Online-Go.com) or Tsumego Hero, convert them into a standardized SGF format, and then generate Anki decks for spaced repetition practice.
 
-This is designed to work with the note type and card template from [anki-tsumego](anki-tsumego).
+This is designed to work with the note type and card template from [anki-tsumego](https://github.com/a913cb82/anki-tsumego).
 
 ## Directory Structure
 
