@@ -122,19 +122,23 @@ def process_node(node):
     # Process this node
     if 'C' in node.properties:
         comment = node.properties['C'][0]
-        if comment.strip() == '+':
-            node.properties['C'] = ['CORRECT']
+        if comment.startswith('+'):
+            node.properties['C'] = ['CORRECT' + comment[1:]]
     
     # Check if leaf node
     if not node.children:
         # It's a leaf. Check if it's marked correct.
         is_correct = False
         if 'C' in node.properties:
-             if 'CORRECT' in node.properties['C'][0]:
+             if node.properties['C'][0].startswith('CORRECT'):
                  is_correct = True
         
         if not is_correct:
-            node.properties['C'] = ['WRONG']
+            if 'C' in node.properties:
+                if not node.properties['C'][0].startswith('WRONG'):
+                    node.properties['C'] = ['WRONG ' + node.properties['C'][0]]
+            else:
+                node.properties['C'] = ['WRONG']
     
     # Recurse
     for child in node.children:
