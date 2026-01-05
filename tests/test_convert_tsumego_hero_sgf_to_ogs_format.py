@@ -63,5 +63,32 @@ class TestConvertSGF(unittest.TestCase):
             process_node(child)
         self.assertIn(";B[ac]C[WRONG]", serialize_tree_to_sgf(root))
 
+    def test_plus_with_comment(self):
+        """Test that + at the start of a comment is replaced by CORRECT, preserving the rest."""
+        sgf_content = "(;GM[1];B[aa]C[+ and some other text])"
+        root = parse_sgf_to_tree(sgf_content)
+        for child in root.children:
+            process_node(child)
+        new_sgf = serialize_tree_to_sgf(root)
+        self.assertIn("C[CORRECT and some other text]", new_sgf)
+
+    def test_wrong_with_comment(self):
+        """Test that WRONG is prepended to existing comments on wrong leaves."""
+        sgf_content = "(;GM[1];B[aa]C[this is wrong because...])"
+        root = parse_sgf_to_tree(sgf_content)
+        for child in root.children:
+            process_node(child)
+        new_sgf = serialize_tree_to_sgf(root)
+        self.assertIn("C[WRONG this is wrong because...]", new_sgf)
+
+    def test_wrong_without_comment(self):
+        """Test that WRONG is added to wrong leaves without comments."""
+        sgf_content = "(;GM[1];B[aa])"
+        root = parse_sgf_to_tree(sgf_content)
+        for child in root.children:
+            process_node(child)
+        new_sgf = serialize_tree_to_sgf(root)
+        self.assertIn("C[WRONG]", new_sgf)
+
 if __name__ == "__main__":
     unittest.main()
